@@ -1,0 +1,40 @@
+{
+  "courseId": "TW-PINEHILL",
+  "name": "松丘高爾夫俱樂部",
+  "ratings": {
+    "blue":  { "courseRating": 71.8, "slopeRating": 129 },
+    "white": { "courseRating": 70.0, "slopeRating": 122 },
+    "red":   { "courseRating": 68.1, "slopeRating": 114 }
+  },
+  "holes": [
+    { "number": 1, "par": 4, "strokeIndex": 5,
+      "tee": { "lat": 24.90000, "lng": 121.20000 },
+      "green": { "front": {"lat":24.90180,"lng":121.20000}, "center": {"lat":24.90200,"lng":121.20000}, "back": {"lat":24.90220,"lng":121.20000} },
+      "hazards": [ { "type": "bunker", "polygon": [ {"lat":24.90100,"lng":121.19995},{"lat":24.90100,"lng":121.20005},{"lat":24.90120,"lng":121.20005},{"lat":24.90120,"lng":121.19995} ] } ] },
+    { "number": 2, "par": 3, "strokeIndex": 15,
+      "tee": { "lat": 24.90250, "lng": 121.20050 },
+      "green": { "front": {"lat":24.90370,"lng":121.20050}, "center": {"lat":24.90385,"lng":121.20050}, "back": {"lat":24.90400,"lng":121.20050} } },
+    { "number": 3, "par": 5, "strokeIndex": 1,
+      "tee": { "lat": 24.90450, "lng": 121.20100 },
+      "green": { "front": {"lat":24.90730,"lng":121.20100}, "center": {"lat":24.90750,"lng":121.20100}, "back": {"lat":24.90770,"lng":121.20100} },
+      "hazards": [ { "type": "water", "polygon": [ {"lat":24.90600,"lng":121.20090},{"lat":24.90600,"lng":121.20112},{"lat":24.90620,"lng":121.20112},{"lat":24.90620,"lng":121.20090} ] } ] },
+    { "number": 4, "par": 4, "strokeIndex": 9,
+      "tee": { "lat": 24.90800, "lng": 121.20150 },
+      "green": { "front": {"lat":24.90970,"lng":121.20150}, "center": {"lat":24.90990,"lng":121.20150}, "back": {"lat":24.91010,"lng":121.20150} } },
+    { "number": 5, "par": 4, "strokeIndex": 3,
+      "tee": { "lat": 24.91050, "lng": 121.20200 },
+      "green": { "front": {"lat":24.91230,"lng":121.20200}, "center": {"lat":24.91250,"lng":121.20200}, "back": {"lat":24.91270,"lng":121.20200} } },
+    { "number": 6, "par": 3, "strokeIndex": 17,
+      "tee": { "lat": 24.91300, "lng": 121.20250 },
+      "green": { "front": {"lat":24.91410,"lng":121.20250}, "center": {"lat":24.91425,"lng":121.20250}, "back": {"lat":24.91440,"lng":121.20250} } },
+    { "number": 7, "par": 5, "strokeIndex": 7,
+      "tee": { "lat": 24.91480, "lng": 121.20300 },
+      "green": { "front": {"lat":24.91760,"lng":121.20300}, "center": {"lat":24.91780,"lng":121.20300}, "back": {"lat":24.91800,"lng":121.20300} } },
+    { "number": 8, "par": 4, "strokeIndex": 11,
+      "tee": { "lat": 24.91830, "lng": 121.20350 },
+      "green": { "front": {"lat":24.92000,"lng":121.20350}, "center": {"lat":24.92020,"lng":121.20350}, "back": {"lat":24.92040,"lng":121.20350} } },
+    { "number": 9, "par": 4, "strokeIndex": 13,
+      "tee": { "lat": 24.92060, "lng": 121.20400 },
+      "green": { "front": {"lat":24.92230,"lng":121.20400}, "center": {"lat":24.92250,"lng":121.20400}, "back": {"lat":24.92270,"lng":121.20400} } }
+  ]
+}

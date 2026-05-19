@@ -1,0 +1,72 @@
+# XcodeGen spec — generate with:  cd App && xcodegen generate && open GoToGolf.xcodeproj
+# (Requires `brew install xcodegen` + Xcode. This layer is NOT swift-test verifiable.)
+name: GoToGolf
+options:
+  bundleIdPrefix: com.gotogolf
+  deploymentTarget:
+    iOS: "17.0"
+    watchOS: "10.0"
+
+packages:
+  GolfCore:
+    path: ..
+
+targets:
+  GoToGolf:
+    type: application
+    platform: iOS
+    sources:
+      - iOS
+      - Shared
+      - path: Resources
+        buildPhase: resources
+    dependencies:
+      - package: GolfCore
+        product: GolfCore
+    info:
+      path: iOS/Info.plist
+      properties:
+        UILaunchScreen: {}
+        NSLocationWhenInUseUsageDescription: "顯示你在球道上的即時距離與策略"
+        NSMotionUsageDescription: "偵測揮桿以協助自動計分"
+    settings:
+      base:
+        TARGETED_DEVICE_FAMILY: "1,2"   # iPhone + iPad
+
+  GoToGolf Watch:
+    type: application
+    platform: watchOS
+    sources: [Watch, Shared]
+    dependencies:
+      - package: GolfCore
+        product: GolfCore
+    info:
+      path: Watch/Info.plist
+      properties:
+        NSLocationWhenInUseUsageDescription: "腕上顯示果嶺距離"
+        WKApplication: true
+
+  GoToGolfUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: [UITests]
+    dependencies:
+      - target: GoToGolf
+
+schemes:
+  GoToGolf:
+    build:
+      targets:
+        GoToGolf: all
+        GoToGolfUITests: [test]
+    run:
+      config: Debug
+      storeKitConfiguration: GoToGolf.storekit
+      # Pick a GPX here to drive geofence tests:
+      #   Edit Scheme ▸ Run ▸ Options ▸ Core Location ▸ Default Location
+      #   → Simulation/Route-AutoAdvance.gpx  or  Route-NoiseNoJump.gpx
+    test:
+      gatherCoverageData: true
+      storeKitConfiguration: GoToGolf.storekit
+      targets:
+        - GoToGolfUITests

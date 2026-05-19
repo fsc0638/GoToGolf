@@ -1,0 +1,40 @@
+{
+  "courseId": "TW-LAKESIDE",
+  "name": "湖畔高爾夫球場",
+  "ratings": {
+    "blue":  { "courseRating": 72.4, "slopeRating": 133 },
+    "white": { "courseRating": 70.6, "slopeRating": 125 },
+    "red":   { "courseRating": 69.0, "slopeRating": 118 }
+  },
+  "holes": [
+    { "number": 1, "par": 5, "strokeIndex": 3,
+      "tee": { "lat": 25.05000, "lng": 121.55000 },
+      "green": { "front": {"lat":25.05280,"lng":121.55000}, "center": {"lat":25.05300,"lng":121.55000}, "back": {"lat":25.05320,"lng":121.55000} },
+      "hazards": [ { "type": "water", "polygon": [ {"lat":25.05150,"lng":121.54990},{"lat":25.05150,"lng":121.55012},{"lat":25.05175,"lng":121.55012},{"lat":25.05175,"lng":121.54990} ] } ] },
+    { "number": 2, "par": 4, "strokeIndex": 7,
+      "tee": { "lat": 25.05350, "lng": 121.55050 },
+      "green": { "front": {"lat":25.05520,"lng":121.55050}, "center": {"lat":25.05540,"lng":121.55050}, "back": {"lat":25.05560,"lng":121.55050} } },
+    { "number": 3, "par": 3, "strokeIndex": 17,
+      "tee": { "lat": 25.05590, "lng": 121.55100 },
+      "green": { "front": {"lat":25.05700,"lng":121.55100}, "center": {"lat":25.05715,"lng":121.55100}, "back": {"lat":25.05730,"lng":121.55100} } },
+    { "number": 4, "par": 4, "strokeIndex": 1,
+      "tee": { "lat": 25.05760, "lng": 121.55150 },
+      "green": { "front": {"lat":25.05930,"lng":121.55150}, "center": {"lat":25.05950,"lng":121.55150}, "back": {"lat":25.05970,"lng":121.55150} },
+      "hazards": [ { "type": "bunker", "polygon": [ {"lat":25.05850,"lng":121.55145},{"lat":25.05850,"lng":121.55155},{"lat":25.05865,"lng":121.55155},{"lat":25.05865,"lng":121.55145} ] } ] },
+    { "number": 5, "par": 4, "strokeIndex": 9,
+      "tee": { "lat": 25.06000, "lng": 121.55200 },
+      "green": { "front": {"lat":25.06170,"lng":121.55200}, "center": {"lat":25.06190,"lng":121.55200}, "back": {"lat":25.06210,"lng":121.55200} } },
+    { "number": 6, "par": 5, "strokeIndex": 5,
+      "tee": { "lat": 25.06240, "lng": 121.55250 },
+      "green": { "front": {"lat":25.06520,"lng":121.55250}, "center": {"lat":25.06540,"lng":121.55250}, "back": {"lat":25.06560,"lng":121.55250} } },
+    { "number": 7, "par": 3, "strokeIndex": 15,
+      "tee": { "lat": 25.06590, "lng": 121.55300 },
+      "green": { "front": {"lat":25.06700,"lng":121.55300}, "center": {"lat":25.06715,"lng":121.55300}, "back": {"lat":25.06730,"lng":121.55300} } },
+    { "number": 8, "par": 4, "strokeIndex": 11,
+      "tee": { "lat": 25.06760, "lng": 121.55350 },
+      "green": { "front": {"lat":25.06930,"lng":121.55350}, "center": {"lat":25.06950,"lng":121.55350}, "back": {"lat":25.06970,"lng":121.55350} } },
+    { "number": 9, "par": 4, "strokeIndex": 13,
+      "tee": { "lat": 25.07000, "lng": 121.55400 },
+      "green": { "front": {"lat":25.07170,"lng":121.55400}, "center": {"lat":25.07190,"lng":121.55400}, "back": {"lat":25.07210,"lng":121.55400} } }
+  ]
+}

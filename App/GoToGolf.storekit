@@ -1,0 +1,49 @@
+{
+  "identifier" : "B1A7D2E0-0001-4000-A000-000000000001",
+  "nonRenewingSubscriptions" : [],
+  "products" : [],
+  "settings" : {
+    "_applicationInternalID" : "0000000001",
+    "_developerTeamID" : "0000000000",
+    "_lastSynchronizedDate" : 0
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "B1A7D2E0-0002-4000-A000-000000000002",
+      "localizations" : [],
+      "name" : "GoToGolf Premium",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [],
+          "codeOffers" : [],
+          "displayPrice" : "2.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "B1A7D2E0-0003-4000-A000-000000000003",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "WHS 差點持續追蹤與平均差點分析",
+              "displayName" : "GoToGolf Premium",
+              "locale" : "zh_TW"
+            },
+            {
+              "description" : "Ongoing WHS handicap tracking & average analysis",
+              "displayName" : "GoToGolf Premium",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.gotogolf.premium.annual",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "GoToGolf Premium Annual",
+          "subscriptionGroupID" : "B1A7D2E0-0002-4000-A000-000000000002",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

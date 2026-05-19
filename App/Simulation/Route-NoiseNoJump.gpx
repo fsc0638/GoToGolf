@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Anti-jump test (Course.demo: hole 1 tee = 25.00100, 121.00000).
+  GPS jitters ±~5 m around the hole-1 tee for ~40 s and NEVER dwells in
+  the hole-2 geofence (hole 2 tee is ~111 m away). The round must stay on
+  hole 1 the entire time — proves the geofence lock rejects noise.
+
+  Use:  Xcode ▸ run ▸ Debug ▸ Simulate Location ▸ (add this file).
+  Expect: "第 1 洞" never changes; 0 hole jumps.
+-->
+<gpx version="1.1" creator="GoToGolf">
+  <wpt lat="25.00100" lon="121.00000"><time>2025-01-01T00:00:00Z</time></wpt>
+  <wpt lat="25.00104" lon="121.00003"><time>2025-01-01T00:00:01Z</time></wpt>
+  <wpt lat="25.00098" lon="120.99996"><time>2025-01-01T00:00:02Z</time></wpt>
+  <wpt lat="25.00103" lon="121.00004"><time>2025-01-01T00:00:03Z</time></wpt>
+  <wpt lat="25.00096" lon="120.99997"><time>2025-01-01T00:00:04Z</time></wpt>
+  <wpt lat="25.00101" lon="121.00002"><time>2025-01-01T00:00:05Z</time></wpt>
+  <wpt lat="25.00099" lon="120.99998"><time>2025-01-01T00:00:06Z</time></wpt>
+  <wpt lat="25.00105" lon="121.00001"><time>2025-01-01T00:00:07Z</time></wpt>
+  <wpt lat="25.00097" lon="120.99999"><time>2025-01-01T00:00:08Z</time></wpt>
+  <wpt lat="25.00102" lon="121.00003"><time>2025-01-01T00:00:09Z</time></wpt>
+  <wpt lat="25.00100" lon="120.99996"><time>2025-01-01T00:00:10Z</time></wpt>
+  <wpt lat="25.00104" lon="121.00002"><time>2025-01-01T00:00:11Z</time></wpt>
+  <wpt lat="25.00098" lon="120.99997"><time>2025-01-01T00:00:12Z</time></wpt>
+  <wpt lat="25.00103" lon="121.00004"><time>2025-01-01T00:00:13Z</time></wpt>
+  <wpt lat="25.00096" lon="120.99998"><time>2025-01-01T00:00:14Z</time></wpt>
+  <wpt lat="25.00101" lon="121.00001"><time>2025-01-01T00:00:15Z</time></wpt>
+  <wpt lat="25.00099" lon="120.99999"><time>2025-01-01T00:00:16Z</time></wpt>
+  <wpt lat="25.00105" lon="121.00003"><time>2025-01-01T00:00:17Z</time></wpt>
+  <wpt lat="25.00097" lon="120.99996"><time>2025-01-01T00:00:18Z</time></wpt>
+  <wpt lat="25.00102" lon="121.00002"><time>2025-01-01T00:00:19Z</time></wpt>
+  <wpt lat="25.00100" lon="120.99997"><time>2025-01-01T00:00:20Z</time></wpt>
+  <wpt lat="25.00104" lon="121.00004"><time>2025-01-01T00:00:21Z</time></wpt>
+  <wpt lat="25.00098" lon="120.99998"><time>2025-01-01T00:00:22Z</time></wpt>
+  <wpt lat="25.00103" lon="121.00001"><time>2025-01-01T00:00:23Z</time></wpt>
+  <wpt lat="25.00096" lon="120.99999"><time>2025-01-01T00:00:24Z</time></wpt>
+  <wpt lat="25.00101" lon="121.00003"><time>2025-01-01T00:00:25Z</time></wpt>
+  <wpt lat="25.00099" lon="120.99996"><time>2025-01-01T00:00:26Z</time></wpt>
+  <wpt lat="25.00105" lon="121.00002"><time>2025-01-01T00:00:27Z</time></wpt>
+  <wpt lat="25.00097" lon="120.99997"><time>2025-01-01T00:00:28Z</time></wpt>
+  <wpt lat="25.00102" lon="121.00004"><time>2025-01-01T00:00:29Z</time></wpt>
+  <wpt lat="25.00100" lon="120.99998"><time>2025-01-01T00:00:30Z</time></wpt>
+  <wpt lat="25.00104" lon="121.00001"><time>2025-01-01T00:00:31Z</time></wpt>
+  <wpt lat="25.00098" lon="120.99999"><time>2025-01-01T00:00:32Z</time></wpt>
+  <wpt lat="25.00103" lon="121.00003"><time>2025-01-01T00:00:33Z</time></wpt>
+  <wpt lat="25.00096" lon="120.99996"><time>2025-01-01T00:00:34Z</time></wpt>
+  <wpt lat="25.00101" lon="121.00002"><time>2025-01-01T00:00:35Z</time></wpt>
+  <wpt lat="25.00099" lon="120.99997"><time>2025-01-01T00:00:36Z</time></wpt>
+  <wpt lat="25.00105" lon="121.00004"><time>2025-01-01T00:00:37Z</time></wpt>
+  <wpt lat="25.00097" lon="120.99998"><time>2025-01-01T00:00:38Z</time></wpt>
+  <wpt lat="25.00102" lon="121.00001"><time>2025-01-01T00:00:39Z</time></wpt>
+  <wpt lat="25.00100" lon="121.00000"><time>2025-01-01T00:00:40Z</time></wpt>
+</gpx>
