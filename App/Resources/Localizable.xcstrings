@@ -1,0 +1,71 @@
+{
+  "sourceLanguage" : "zh-Hant",
+  "strings" : {
+    "GoToGolf Premium" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "GoToGolf Premium" } }
+      }
+    },
+    "升級" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Upgrade" } }
+      }
+    },
+    "找不到球場圖資" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No course data found" } }
+      }
+    },
+    "選擇所在球場" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Choose your course" } }
+      }
+    },
+    "球道" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Fairway" } }
+      }
+    },
+    "計分" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Score" } }
+      }
+    },
+    "複盤" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Debrief" } }
+      }
+    },
+    "差點" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Handicap" } }
+      }
+    },
+    "戰術複盤" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tactical Debrief" } }
+      }
+    },
+    "差點與歷史" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Handicap & History" } }
+      }
+    },
+    "結束並儲存本回合" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Finish & save round" } }
+      }
+    },
+    "還原購買" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Restore purchase" } }
+      }
+    },
+    "總桿 · 上下滑動微調" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gross · swipe up/down to adjust" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}

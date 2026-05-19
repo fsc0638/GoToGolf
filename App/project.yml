@@ -29,9 +29,12 @@ targets:
         UILaunchScreen: {}
         NSLocationWhenInUseUsageDescription: "顯示你在球道上的即時距離與策略"
         NSMotionUsageDescription: "偵測揮桿以協助自動計分"
+        CFBundleDevelopmentRegion: "zh-Hant"
+        CFBundleLocalizations: ["zh-Hant", "en"]
     settings:
       base:
         TARGETED_DEVICE_FAMILY: "1,2"   # iPhone + iPad
+        SWIFT_EMIT_LOC_STRINGS: "YES"   # auto-extract Text(...) into Localizable.xcstrings
 
   GoToGolf Watch:
     type: application
