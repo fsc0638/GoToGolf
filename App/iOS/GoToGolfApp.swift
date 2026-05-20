@@ -52,6 +52,7 @@ struct RoundContainer: View {
                 }
                 .font(.footnote.weight(.medium))
                 .foregroundStyle(DS.fairway)
+                .accessibilityIdentifier("round.exitToCourses")
                 Spacer()
                 Text(vm.courseName)
                     .font(.footnote.weight(.semibold))

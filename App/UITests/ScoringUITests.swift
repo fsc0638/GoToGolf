@@ -84,6 +84,56 @@ final class ScoringUITests: XCTestCase {
         XCTAssertEqual(topar.label, "+1", "Par4 打 5 桿後相對標準桿應為 +1")
     }
 
+    /// Full custom-course flow: back out of the auto-selected round → open
+    /// the create sheet → save a brand-new course → confirm the app routes
+    /// into the new round → enter a score → finish + save the round.
+    func testCreateCustomCourseAndFinishRound() {
+        // setUp landed us in 淡水. Back out to the course picker first.
+        let back = app.buttons["round.exitToCourses"]
+        XCTAssertTrue(back.waitForExistence(timeout: 5), "找不到『換球場』按鈕")
+        back.tap()
+
+        let add = app.buttons["course.add"]
+        XCTAssertTrue(add.waitForExistence(timeout: 3), "找不到『新增球場』按鈕")
+        add.tap()
+
+        // Unique suffix so repeated simulator runs don't collide on name.
+        let suffix = ProcessInfo.processInfo.globallyUniqueString.prefix(8)
+        let courseName = "測試球場-\(suffix)"
+        let nameField = app.textFields["create.name"]
+        XCTAssertTrue(nameField.waitForExistence(timeout: 3))
+        nameField.tap()
+        nameField.typeText(courseName)
+
+        let save = app.buttons["create.save"]
+        XCTAssertTrue(save.waitForExistence(timeout: 2))
+        save.tap()
+
+        // After save we should auto-enter the freshly-created course.
+        let header = app.staticTexts["round.courseName"]
+        XCTAssertTrue(header.waitForExistence(timeout: 5),
+                      "儲存後沒有自動進入新球場")
+        XCTAssertEqual(header.label, courseName)
+
+        // Scoring tab is the default — hole 1 row must render.
+        XCTAssertTrue(app.staticTexts["scoring.hole.1"].waitForExistence(timeout: 3))
+
+        // Enter a Par on hole 1 (default Par 4 → gross 4).
+        let plus = app.buttons["scoring.gross.1.plus"]
+        XCTAssertTrue(plus.waitForExistence(timeout: 2))
+        for _ in 0..<4 { plus.tap() }
+
+        // Switch to 差點 and finish the round.
+        openTab("差點")
+        let finish = app.buttons["history.finish"]
+        XCTAssertTrue(finish.waitForExistence(timeout: 3))
+        finish.tap()
+
+        // Trophy-card variant of the finish row should now show the saved copy.
+        XCTAssertTrue(app.staticTexts["已儲存本回合"].waitForExistence(timeout: 3),
+                      "finishAndSave 後沒有看到已儲存提示")
+    }
+
     func testHistoryAndDebriefTabsLoad() {
         openTab("差點")
         XCTAssertTrue(app.staticTexts["handicap.index"].waitForExistence(timeout: 5))
