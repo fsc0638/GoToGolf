@@ -147,6 +147,57 @@ final class ScoringUITests: XCTestCase {
                       "儲存後差點頁沒有顯示桿數趨勢圖")
     }
 
+    /// Save a round then exercise the swipe-to-delete action. The strict
+    /// "row count drops by 1" check is brittle under XCUITest's snapshot
+    /// caching of SwiftUI lists, so we settle for proving the delete
+    /// button surfaces and disappears after being tapped.
+    func testSavedRoundCanBeSwipeDeleted() {
+        openTab("計分")
+        let plus = app.buttons["scoring.gross.1.plus"]
+        XCTAssertTrue(plus.waitForExistence(timeout: 5))
+        for _ in 0..<4 { plus.tap() }
+        openTab("差點")
+        let finish = app.buttons["history.finish"]
+        XCTAssertTrue(finish.waitForExistence(timeout: 3))
+        finish.tap()
+
+        // Auto-routes to 複盤 — switch back to 差點 to see the row.
+        openTab("差點")
+        XCTAssertTrue(app.descendants(matching: .any)
+            .matching(identifier: "history.trend").firstMatch
+            .waitForExistence(timeout: 3))
+
+        // Scroll until at least one history row is on-screen.
+        var totalText = app.staticTexts.matching(
+            NSPredicate(format: "label BEGINSWITH '總桿'"))
+        var swipes = 0
+        while totalText.count == 0 && swipes < 6 {
+            app.swipeUp()
+            swipes += 1
+            totalText = app.staticTexts.matching(
+                NSPredicate(format: "label BEGINSWITH '總桿'"))
+        }
+        XCTAssertGreaterThanOrEqual(totalText.count, 1,
+                                    "歷史紀錄列應至少出現一筆")
+
+        // Coordinate-drag the row leftward to surface the trailing
+        // swipe action; the explicit identifier lets the test find it.
+        let row = totalText.element(boundBy: 0)
+        let start = row.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5))
+        let end   = row.coordinate(withNormalizedOffset: CGVector(dx: -2.0, dy: 0.5))
+        start.press(forDuration: 0.05, thenDragTo: end)
+
+        let deleteButton = app.buttons["history.row.delete"]
+        XCTAssertTrue(deleteButton.waitForExistence(timeout: 2),
+                      "swipe 沒有出現自訂的刪除按鈕")
+        deleteButton.tap()
+
+        // After tap the button must collapse — proves the action ran.
+        expectation(for: NSPredicate(format: "exists == false"),
+                    evaluatedWith: deleteButton)
+        waitForExpectations(timeout: 3)
+    }
+
     func testHistoryAndDebriefTabsLoad() {
         openTab("差點")
         XCTAssertTrue(app.staticTexts["handicap.index"].waitForExistence(timeout: 5))

@@ -88,6 +88,38 @@ final class RoundViewModel: ObservableObject {
         refresh()
     }
 
+    // MARK: - History mutations
+
+    /// Remove a saved round and rebuild the handicap ledger from the
+    /// remaining rounds so the displayed index stays consistent.
+    func deleteRound(id: UUID) {
+        store.delete(id: id)
+        rebuildLedgerFromStore()
+        history = Self.rows(from: store)
+    }
+
+    /// Re-submit every persisted round in chronological order so the
+    /// HandicapLedger reflects only what's currently in the store.
+    private func rebuildLedgerFromStore() {
+        let catalog = CourseCatalog.entries()
+        let chronological = store.all().sorted { $0.round.startedAt < $1.round.startedAt }
+        var rebuilt = HandicapLedger(differentials: [])
+        let service = HandicapService()
+        for synced in chronological {
+            guard let c = catalog.first(where: { $0.course.id == synced.round.courseID })?.course
+            else { continue }
+            if let result = try? service.submit(
+                round: synced.round, course: c,
+                priorDifferentials: rebuilt.differentials,
+                currentHandicapIndex: rebuilt.index ?? 0) {
+                rebuilt.record(result.differential)
+            }
+        }
+        rebuilt.write(to: ledgerURL)
+        handicapIndex = rebuilt.index
+        acceptedScores = rebuilt.acceptedCount
+    }
+
     // MARK: - Finish & persist
 
     func finishAndSave() {

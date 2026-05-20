@@ -92,6 +92,14 @@ struct HistoryView: View {
                                     .font(.headline.monospacedDigit())
                                     .foregroundStyle(DS.fairway)
                             }
+                            .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                                Button(role: .destructive) {
+                                    vm.deleteRound(id: row.id)
+                                } label: {
+                                    Label("刪除", systemImage: "trash")
+                                }
+                                .accessibilityIdentifier("history.row.delete")
+                            }
                         }
                     }
                 }
