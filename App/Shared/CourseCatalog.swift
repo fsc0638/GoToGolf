@@ -59,6 +59,27 @@ enum CourseCatalog {
         return courseListing
     }
 
+    /// Whether a given course ID came from the user-added catalog (vs. the
+    /// bundled seed). Used by the picker to gate destructive actions.
+    static func isUserAdded(_ courseID: String) -> Bool {
+        courseID.hasPrefix("USER-")
+    }
+
+    /// Remove a user-added course by id. No-op for bundled seed courses.
+    @discardableResult
+    static func deleteUserCourse(id: String) -> Bool {
+        guard isUserAdded(id) else { return false }
+        var current = userAdded()
+        guard let idx = current.firstIndex(where: { $0.course.id == id })
+        else { return false }
+        current.remove(at: idx)
+        if let encoded = encode(current) {
+            UserDefaults.standard.set(encoded, forKey: userDefaultsKey)
+            return true
+        }
+        return false
+    }
+
     private static func encode(_ list: [CourseListing]) -> Data? {
         // Re-serialise back to the catalog schema for persistence.
         let dicts = list.map { l -> [String: Any] in

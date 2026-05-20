@@ -22,6 +22,18 @@ struct CourseListView: View {
                         ForEach(group.courses) { entry in
                             CourseRow(entry: entry, onSelect: onSelect)
                                 .listRowBackground(DS.cream.opacity(0.55))
+                                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                                    if CourseCatalog.isUserAdded(entry.course.id) {
+                                        Button(role: .destructive) {
+                                            CourseCatalog.deleteUserCourse(id: entry.course.id)
+                                            entries = CourseCatalog.entries()
+                                        } label: {
+                                            Label("刪除", systemImage: "trash")
+                                        }
+                                        .accessibilityIdentifier(
+                                            "course.delete.\(entry.course.id)")
+                                    }
+                                }
                         }
                     } header: {
                         Text(group.region)
