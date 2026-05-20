@@ -13,15 +13,15 @@ struct DebriefView: View {
             Group {
                 if sizeClass == .regular {
                     HStack(alignment: .top, spacing: 24) {
-                        scorecard
-                        stats.frame(width: 320)
+                        scorecard.yearbookCard()
+                        stats.yearbookCard().frame(width: 320)
                     }
                     .padding()
                 } else {
                     ScrollView {
-                        VStack(spacing: 20) {
-                            stats
-                            scorecard
+                        VStack(spacing: 16) {
+                            stats.yearbookCard()
+                            scorecard.yearbookCard()
                         }
                         .padding()
                     }
@@ -34,44 +34,66 @@ struct DebriefView: View {
     private var s: RoundStatistics { vm.debrief }
 
     private var stats: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 14) {
+            Text("本回合摘要")
+                .font(.footnote.weight(.bold))
+                .foregroundStyle(DS.fairway)
+                .textCase(.uppercase)
+
             statRow("已打洞數", "\(s.holesPlayed)")
             statRow("相對標準桿",
                     s.totalToPar == 0 ? "E"
-                    : (s.totalToPar > 0 ? "+\(s.totalToPar)" : "\(s.totalToPar)"))
+                    : (s.totalToPar > 0 ? "+\(s.totalToPar)" : "\(s.totalToPar)"),
+                    accent: DS.scoreColor(diff: s.totalToPar))
             statRow("攻果嶺率 (GIR)", "\(s.greensInRegulation)/\(max(s.holesPlayed,1))")
             statRow("平均推桿", String(format: "%.2f", s.averagePuttsPerHole))
             statRow("一推 / 三推+", "\(s.onePutts) / \(s.threePuttsOrWorse)")
 
-            Text("成績分佈").font(.headline).padding(.top, 4)
-            distribution("Eagle+", s.eaglesOrBetter, .purple)
-            distribution("Birdie", s.birdies, .red)
-            distribution("Par", s.pars, .green)
-            distribution("Bogey", s.bogeys, .orange)
-            distribution("Double", s.doubleBogeys, .brown)
-            distribution("Triple+", s.triplesOrWorse, .gray)
+            Divider().padding(.vertical, 2)
+
+            Text("成績分佈")
+                .font(.footnote.weight(.bold))
+                .foregroundStyle(DS.fairway)
+                .textCase(.uppercase)
+            distribution("Eagle+", s.eaglesOrBetter, DS.gold)
+            distribution("Birdie",  s.birdies,         DS.fairway)
+            distribution("Par",     s.pars,            .primary.opacity(0.65))
+            distribution("Bogey",   s.bogeys,          DS.amber)
+            distribution("Double",  s.doubleBogeys,    DS.bogey)
+            distribution("Triple+", s.triplesOrWorse,  DS.bogey.opacity(0.6))
         }
         .accessibilityIdentifier("debrief.stats")
     }
 
-    private func statRow(_ label: String, _ value: String) -> some View {
+    private func statRow(_ label: String, _ value: String,
+                         accent: Color = .primary) -> some View {
         HStack {
             Text(label).foregroundStyle(.secondary)
             Spacer()
-            Text(value).font(.headline).monospacedDigit()
+            Text(value)
+                .font(.title3.weight(.semibold).monospacedDigit())
+                .foregroundStyle(accent)
         }
     }
 
     private func distribution(_ label: String, _ count: Int, _ color: Color) -> some View {
         HStack {
-            Text(label).frame(width: 70, alignment: .leading).font(.caption)
+            Text(label)
+                .frame(width: 70, alignment: .leading)
+                .font(.caption.weight(.medium))
             GeometryReader { geo in
-                Capsule()
-                    .fill(color)
-                    .frame(width: max(4, geo.size.width * barFraction(count)))
+                ZStack(alignment: .leading) {
+                    Capsule().fill(color.opacity(0.15))
+                    Capsule()
+                        .fill(color)
+                        .frame(width: max(4, geo.size.width * barFraction(count)))
+                }
             }
-            .frame(height: 14)
-            Text("\(count)").font(.caption.monospacedDigit()).frame(width: 24)
+            .frame(height: 12)
+            Text("\(count)")
+                .font(.caption.monospacedDigit())
+                .frame(width: 24)
+                .foregroundStyle(color)
         }
     }
 
@@ -81,9 +103,16 @@ struct DebriefView: View {
     }
 
     private var scorecard: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text("\(vm.courseName) · 計分卡").font(.headline)
-            Grid(horizontalSpacing: 10, verticalSpacing: 6) {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack {
+                Text(vm.courseName)
+                    .font(.headline)
+                Spacer()
+                Text("Par \(vm.coursePar)")
+                    .font(.footnote.monospacedDigit())
+                    .foregroundStyle(.secondary)
+            }
+            Grid(horizontalSpacing: 12, verticalSpacing: 6) {
                 GridRow {
                     Text("洞").gridColumnHeader()
                     Text("Par").gridColumnHeader()
@@ -96,7 +125,7 @@ struct DebriefView: View {
                         Text("\(c.par)").foregroundStyle(.secondary)
                         Text(c.gross == 0 ? "–" : "\(c.gross)")
                             .fontWeight(.semibold)
-                            .foregroundStyle(scoreColor(c))
+                            .foregroundStyle(DS.scoreColor(diff: c.gross == 0 ? 0 : c.gross - c.par))
                         Text(c.putts == 0 ? "–" : "\(c.putts)")
                             .foregroundStyle(.secondary)
                     }
@@ -106,20 +135,12 @@ struct DebriefView: View {
         }
         .accessibilityIdentifier("debrief.scorecard")
     }
-
-    private func scoreColor(_ c: ScorecardCell) -> Color {
-        guard c.gross > 0 else { return .primary }
-        switch c.gross - c.par {
-        case ..<0: return .red
-        case 0:    return .green
-        case 1:    return .orange
-        default:   return .brown
-        }
-    }
 }
 
 private extension Text {
     func gridColumnHeader() -> some View {
-        self.font(.caption.weight(.bold)).foregroundStyle(.secondary)
+        self.font(.caption.weight(.bold))
+            .foregroundStyle(.secondary)
+            .textCase(.uppercase)
     }
 }

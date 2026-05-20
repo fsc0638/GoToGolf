@@ -51,7 +51,7 @@ final class ScoringUITests: XCTestCase {
         openTab("計分")
         let gross = app.staticTexts["scoring.gross.1"]
         XCTAssertTrue(gross.waitForExistence(timeout: 5))
-        XCTAssertEqual(gross.label, "0", "新球局應從 0 桿開始")
+        XCTAssertEqual(gross.label, "–", "新球局未輸入桿數時應顯示破折號占位")
 
         let plus = app.buttons["scoring.gross.1.plus"]
         XCTAssertTrue(plus.waitForExistence(timeout: 2))

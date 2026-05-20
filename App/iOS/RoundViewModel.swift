@@ -30,6 +30,7 @@ final class RoundViewModel: ObservableObject {
     @Published private(set) var showUpgradePrompt = false
     @Published private(set) var history: [PastRoundRow] = []
     let courseName: String
+    let coursePar: Int
 
     private let course: Course
     private let session: RoundSession
@@ -55,6 +56,7 @@ final class RoundViewModel: ObservableObject {
         self.course = course
         session = RoundSession(course: course, teeBox: teeBox)
         courseName = course.name
+        coursePar = course.par
         store = FileRoundStore(fileURL: Self.docURL("rounds.json"))
         ledgerURL = Self.docURL("handicap.json")
         deviceID = UIDevice.current.identifierForVendor?.uuidString ?? "ios-device"

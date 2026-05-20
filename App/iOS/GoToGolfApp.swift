@@ -4,7 +4,10 @@ import GolfCore
 @main
 struct GoToGolfApp: App {
     var body: some Scene {
-        WindowGroup { RootView() }
+        WindowGroup {
+            RootView()
+                .tint(DS.fairway)
+        }
     }
 }
 
@@ -43,15 +46,19 @@ struct RoundContainer: View {
         }
         .safeAreaInset(edge: .top) {
             HStack {
-                Button("← 換球場", action: onExit)
-                    .font(.footnote)
+                Button(action: onExit) {
+                    Label("換球場", systemImage: "chevron.backward")
+                        .labelStyle(.titleAndIcon)
+                }
+                .font(.footnote.weight(.medium))
+                .foregroundStyle(DS.fairway)
                 Spacer()
                 Text(vm.courseName)
                     .font(.footnote.weight(.semibold))
                     .accessibilityIdentifier("round.courseName")
             }
             .padding(.horizontal)
-            .padding(.vertical, 6)
+            .padding(.vertical, 8)
             .background(.bar)
         }
     }

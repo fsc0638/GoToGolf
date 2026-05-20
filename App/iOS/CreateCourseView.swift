@@ -50,9 +50,10 @@ struct CreateCourseView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button("取消") { dismiss() }
+                        .foregroundStyle(.secondary)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("儲存") {
+                    Button {
                         let trimmedRegion = region.trimmingCharacters(in: .whitespaces)
                         if let listing = CourseCatalog.addUserCourse(
                             name: name.trimmingCharacters(in: .whitespaces),
@@ -62,6 +63,8 @@ struct CreateCourseView: View {
                             onCreated(listing)
                             dismiss()
                         }
+                    } label: {
+                        Text("儲存").fontWeight(.semibold)
                     }
                     .disabled(!canSave)
                     .accessibilityIdentifier("create.save")
