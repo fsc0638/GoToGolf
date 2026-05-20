@@ -55,6 +55,10 @@ targets:
     sources: [UITests]
     dependencies:
       - target: GoToGolf
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: "YES"
+        PRODUCT_BUNDLE_IDENTIFIER: "com.gotogolf.GoToGolfUITests"
 
 schemes:
   GoToGolf:
