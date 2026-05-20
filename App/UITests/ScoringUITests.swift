@@ -13,10 +13,17 @@ final class ScoringUITests: XCTestCase {
     }
 
     /// Tap a bundled Taiwan course on the picker to enter the round.
+    /// Scrolls the list when prior test runs have grown the user catalog
+    /// enough to push 淡水 off-screen.
     private func selectCourse() {
         let byID = app.descendants(matching: .any)
             .matching(identifier: "course.TW-TAMSUI").firstMatch
-        if byID.waitForExistence(timeout: 8) {
+        var swipes = 0
+        while !byID.exists && swipes < 8 {
+            app.swipeUp()
+            swipes += 1
+        }
+        if byID.waitForExistence(timeout: 4) {
             byID.tap()
             return
         }

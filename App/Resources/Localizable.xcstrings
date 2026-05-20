@@ -6,34 +6,99 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "GoToGolf Premium" } }
       }
     },
+    "iCloud 跨裝置同步差點與球局" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "iCloud sync handicap & rounds across devices" } }
+      }
+    },
+    "一推 / 三推+" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "1-putt / 3-putt+" } }
+      }
+    },
+    "一張卡同時記 4 位球員 group round" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Group round: one card, up to 4 players" } }
+      }
+    },
+    "一次解鎖跨裝置、可分享、可匯出的進階工具組。" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "One tap unlocks the cross-device, shareable, export-ready toolkit." } }
+      }
+    },
+    "世界差點 WHS" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "WHS Handicap" } }
+      }
+    },
+    "你已累積足夠成績,Premium 替你把球場資料帶到下一台手機。" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "You've banked enough rounds — Premium carries your data to your next phone." } }
+      }
+    },
+    "儲存" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Save" } }
+      }
+    },
+    "其他" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Other" } }
+      }
+    },
+    "刪除" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete" } }
+      }
+    },
+    "匯出 CSV / PDF 給教練或記分本" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Export CSV / PDF for your coach or scorebook" } }
+      }
+    },
+    "升級 GoToGolf Premium" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Upgrade to GoToGolf Premium" } }
+      }
+    },
     "升級" : {
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Upgrade" } }
       }
     },
-    "找不到球場圖資" : {
+    "取消" : {
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "No course data found" } }
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cancel" } }
       }
     },
-    "選擇所在球場" : {
+    "地區（縣市，選填）" : {
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Choose your course" } }
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Region (county, optional)" } }
       }
     },
-    "球道" : {
+    "基本資料" : {
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Fairway" } }
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Basic info" } }
       }
     },
-    "計分" : {
+    "場次" : {
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Score" } }
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Round #" } }
       }
     },
-    "複盤" : {
+    "對標準桿" : {
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Debrief" } }
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "vs Par" } }
+      }
+    },
+    "對標準桿趨勢" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Trend vs Par" } }
+      }
+    },
+    "尚無紀錄" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No rounds yet" } }
       }
     },
     "差點" : {
@@ -41,14 +106,169 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Handicap" } }
       }
     },
+    "差點與歷史" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Handicap & History" } }
+      }
+    },
+    "差點與歷史紀錄已更新" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Handicap & history updated" } }
+      }
+    },
+    "已儲存本回合" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Round saved" } }
+      }
+    },
+    "已打" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Played" } }
+      }
+    },
+    "已打洞數" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Holes played" } }
+      }
+    },
+    "已訂閱 · 差點追蹤已解鎖" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Subscribed · Premium unlocked" } }
+      }
+    },
+    "已認證" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Accepted" } }
+      }
+    },
+    "平均推桿" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Avg putts" } }
+      }
+    },
+    "成績分佈" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Score distribution" } }
+      }
+    },
     "戰術複盤" : {
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Tactical Debrief" } }
       }
     },
-    "差點與歷史" : {
+    "打滿 3 場 (54 洞) 即可建立首個差點指數" : {
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Handicap & History" } }
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Play 3 rounds (54 holes) to establish your first WHS index" } }
+      }
+    },
+    "找不到球場" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No course found" } }
+      }
+    },
+    "推" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Putts" } }
+      }
+    },
+    "推桿" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Putts" } }
+      }
+    },
+    "插畫 © OpenMoji · CC BY-SA 4.0 · openmoji.org" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Illustrations © OpenMoji · CC BY-SA 4.0 · openmoji.org" } }
+      }
+    },
+    "換球場" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Switch course" } }
+      }
+    },
+    "攻果嶺率 (GIR)" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Greens in regulation (GIR)" } }
+      }
+    },
+    "新增球場" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add course" } }
+      }
+    },
+    "本回合" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "This round" } }
+      }
+    },
+    "本回合摘要" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Round summary" } }
+      }
+    },
+    "本回合留下 Eagle 等罕見好球" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "An Eagle or better this round!" } }
+      }
+    },
+    "桿" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gross" } }
+      }
+    },
+    "桿數" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gross" } }
+      }
+    },
+    "桿數趨勢" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gross trend" } }
+      }
+    },
+    "歷史球局" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Round history" } }
+      }
+    },
+    "每洞 Par（預設 4，依實際調整）" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Hole pars (default 4, adjust as needed)" } }
+      }
+    },
+    "洞" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Hole" } }
+      }
+    },
+    "洞數" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Holes" } }
+      }
+    },
+    "球場名稱" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Course name" } }
+      }
+    },
+    "目前無法載入訂閱方案" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Subscription plan unavailable" } }
+      }
+    },
+    "相對" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "vs Par" } }
+      }
+    },
+    "相對標準桿" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "vs Par" } }
+      }
+    },
+    "穩定壓在標準桿之內" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Steady — at or under par" } }
       }
     },
     "結束並儲存本回合" : {
@@ -56,14 +276,54 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Finish & save round" } }
       }
     },
+    "繼續累積場次,差點才會穩" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Keep playing — your handicap stabilises with rounds" } }
+      }
+    },
+    "複盤" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Debrief" } }
+      }
+    },
+    "訂閱成功,已解鎖雲端同步 / 匯出 / 多球員 group round" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Subscribed — cloud sync, export, and group round unlocked" } }
+      }
+    },
+    "計分" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Score" } }
+      }
+    },
+    "計分卡" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scorecard" } }
+      }
+    },
+    "購買待核准" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Purchase pending" } }
+      }
+    },
+    "近期表現" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Recent rounds" } }
+      }
+    },
+    "選擇所在球場" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Choose your course" } }
+      }
+    },
     "還原購買" : {
       "localizations" : {
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Restore purchase" } }
       }
     },
-    "總桿 · 上下滑動微調" : {
+    "點右上「＋」新增你的球場" : {
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Gross · swipe up/down to adjust" } }
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tap + at the top right to add your course" } }
       }
     }
   },
