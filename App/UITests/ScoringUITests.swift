@@ -36,8 +36,14 @@ final class ScoringUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["scoring.hole.1"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["scoring.gross.1"].exists)
         XCTAssertTrue(app.staticTexts["scoring.putts.1"].exists)
-        // 18-hole bundled course → hole 18 row exists too.
-        XCTAssertTrue(app.staticTexts["scoring.hole.18"].exists)
+        // 18-hole bundled course → hole 18 row exists once we scroll the lazy List.
+        let hole18 = app.staticTexts["scoring.hole.18"]
+        var swipes = 0
+        while !hole18.exists && swipes < 8 {
+            app.swipeUp()
+            swipes += 1
+        }
+        XCTAssertTrue(hole18.waitForExistence(timeout: 2))
     }
 
     /// Tapping the + button on hole 1's gross stepper must increase the value.
