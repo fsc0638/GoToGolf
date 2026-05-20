@@ -1,4 +1,5 @@
 import SwiftUI
+import GolfCore
 
 /// Scorecard grid: one row per hole with Par / Gross (+/−) / Putts (+/−).
 /// Manual entry — no GPS/auto-detection.
@@ -40,6 +41,9 @@ struct ScoringView: View {
             }
             .listStyle(.insetGrouped)
             .scrollContentBackground(.hidden)
+            .safeAreaInset(edge: .top, spacing: 0) {
+                RunningSummaryBar(stats: vm.debrief, totalHoles: vm.scorecard.count)
+            }
             .navigationTitle("計分卡")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -66,6 +70,59 @@ struct ScoringView: View {
             return AnyView(label.frame(maxWidth: .infinity, alignment: .leading))
         }
         return AnyView(label)
+    }
+}
+
+/// Sticky strip above the scorecard list showing live totals derived from
+/// the same RoundStatistics the debrief screen uses.
+private struct RunningSummaryBar: View {
+    let stats: RoundStatistics
+    let totalHoles: Int
+
+    private var diffLabel: String {
+        if stats.holesPlayed == 0 { return "—" }
+        if stats.totalToPar == 0 { return "E" }
+        return stats.totalToPar > 0 ? "+\(stats.totalToPar)" : "\(stats.totalToPar)"
+    }
+
+    private var diffColor: Color {
+        stats.holesPlayed == 0 ? .secondary : DS.scoreColor(diff: stats.totalToPar)
+    }
+
+    var body: some View {
+        HStack(spacing: 14) {
+            stat("已打", "\(stats.holesPlayed)/\(totalHoles)",
+                 identifier: "scoring.summary.played")
+            Divider().frame(height: 26)
+            stat("桿數", "\(stats.totalGross)",
+                 identifier: "scoring.summary.gross")
+            Divider().frame(height: 26)
+            stat("相對", diffLabel, color: diffColor,
+                 identifier: "scoring.summary.topar")
+            Spacer()
+            stat("推桿", "\(stats.totalPutts)",
+                 identifier: "scoring.summary.putts")
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 10)
+        .background(DS.cream)
+        .overlay(alignment: .bottom) {
+            Rectangle().fill(.separator).frame(height: 0.5)
+        }
+    }
+
+    private func stat(_ label: String, _ value: String,
+                      color: Color = .primary,
+                      identifier: String) -> some View {
+        VStack(alignment: .leading, spacing: 2) {
+            Text(label)
+                .font(.caption2.weight(.medium))
+                .foregroundStyle(.secondary)
+            Text(value)
+                .font(.headline.monospacedDigit())
+                .foregroundStyle(color)
+                .accessibilityIdentifier(identifier)
+        }
     }
 }
 

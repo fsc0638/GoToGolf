@@ -62,6 +62,28 @@ final class ScoringUITests: XCTestCase {
         waitForExpectations(timeout: 3)
     }
 
+    /// Summary bar above the scorecard must mirror the gross + to-par stats
+    /// the moment the user enters a score.
+    func testSummaryBarReflectsRunningTotals() {
+        openTab("計分")
+        let gross = app.staticTexts["scoring.summary.gross"]
+        XCTAssertTrue(gross.waitForExistence(timeout: 5))
+        XCTAssertEqual(gross.label, "0", "未輸入桿數時累積桿數應為 0")
+
+        // Drive hole 1 (Par 4 on the bundled 淡水 course) to gross = 5.
+        let plus = app.buttons["scoring.gross.1.plus"]
+        XCTAssertTrue(plus.waitForExistence(timeout: 2))
+        for _ in 0..<5 { plus.tap() }
+
+        expectation(for: NSPredicate(format: "label == %@", "5"),
+                    evaluatedWith: gross)
+        waitForExpectations(timeout: 3)
+
+        // toPar should now read +1 (5 on Par 4 == bogey).
+        let topar = app.staticTexts["scoring.summary.topar"]
+        XCTAssertEqual(topar.label, "+1", "Par4 打 5 桿後相對標準桿應為 +1")
+    }
+
     func testHistoryAndDebriefTabsLoad() {
         openTab("差點")
         XCTAssertTrue(app.staticTexts["handicap.index"].waitForExistence(timeout: 5))
