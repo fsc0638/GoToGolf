@@ -28,7 +28,10 @@ struct RootView: View {
 /// subscription）. Map/distance tabs were removed with the GPS layer.
 struct RoundContainer: View {
     @StateObject private var vm: RoundViewModel
+    @State private var selectedTab: Tab = .scoring
     private let onExit: () -> Void
+
+    enum Tab: Hashable { case scoring, debrief, history }
 
     init(course: Course, onExit: @escaping () -> Void) {
         _vm = StateObject(wrappedValue: RoundViewModel(course: course, teeBox: .white))
@@ -36,13 +39,21 @@ struct RoundContainer: View {
     }
 
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             ScoringView(vm: vm)
                 .tabItem { Label("計分", systemImage: "list.number") }
+                .tag(Tab.scoring)
             DebriefView(vm: vm)
                 .tabItem { Label("複盤", systemImage: "square.grid.3x3.fill") }
+                .tag(Tab.debrief)
             HistoryView(vm: vm)
                 .tabItem { Label("差點", systemImage: "chart.line.uptrend.xyaxis") }
+                .tag(Tab.history)
+        }
+        .onChange(of: vm.roundSaved) { _, isSaved in
+            // Auto-jump to the debrief tab the moment a round gets persisted,
+            // so the OpenMoji summary card is what the user sees next.
+            if isSaved { selectedTab = .debrief }
         }
         .safeAreaInset(edge: .top) {
             HStack {

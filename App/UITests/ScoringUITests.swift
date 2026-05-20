@@ -129,9 +129,17 @@ final class ScoringUITests: XCTestCase {
         XCTAssertTrue(finish.waitForExistence(timeout: 3))
         finish.tap()
 
-        // Trophy-card variant of the finish row should now show the saved copy.
+        // finishAndSave should auto-route to the 複盤 tab so the OpenMoji
+        // summary card is what the user lands on.
+        let debrief = app.descendants(matching: .any)
+            .matching(identifier: "debrief.stats").firstMatch
+        XCTAssertTrue(debrief.waitForExistence(timeout: 5),
+                      "finishAndSave 後沒有自動切到複盤頁")
+
+        // Switching back to 差點 should still surface the saved confirmation.
+        openTab("差點")
         XCTAssertTrue(app.staticTexts["已儲存本回合"].waitForExistence(timeout: 3),
-                      "finishAndSave 後沒有看到已儲存提示")
+                      "差點頁沒有保留已儲存提示")
     }
 
     func testHistoryAndDebriefTabsLoad() {
