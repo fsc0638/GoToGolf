@@ -52,7 +52,7 @@ final class SubscriptionStore: ObservableObject {
                 if case .verified(let transaction) = verification {
                     await transaction.finish()
                     await refreshEntitlement()
-                    statusMessage = "訂閱成功，已解鎖差點追蹤"
+                    statusMessage = "訂閱成功,已解鎖雲端同步 / 匯出 / 多球員 group round"
                 }
             case .userCancelled:
                 statusMessage = nil

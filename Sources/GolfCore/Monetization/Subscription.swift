@@ -5,12 +5,17 @@ public enum SubscriptionTier: String, Codable, Sendable {
     case premium
 }
 
-/// Free baseline = map, hazard avoidance, casual scoring (never gated).
-/// Premium unlocks the long-term handicap/analysis surface.
+/// Free baseline = unlimited solo scoring, full per-round debrief, local
+/// WHS handicap, swipe-delete history. Never gated.
+///
+/// Premium = the cross-device / shareable / portable layer:
+///   - cloudSync      iCloud-mirrored rounds + WHS ledger across devices.
+///   - exportRounds   CSV / PDF export of a round or full history.
+///   - groupRound     One scorecard tracks up to 4 players in one tap.
 public enum PremiumFeature: String, CaseIterable, Sendable {
-    case handicapTracking   // WHS 差點持續追蹤
-    case averageAnalysis    // 平均差點趨勢分析
-    case debrief3D          // 3D 戰術複盤
+    case cloudSync
+    case exportRounds
+    case groupRound
 }
 
 public struct EntitlementService: Sendable {

@@ -155,15 +155,23 @@ struct HistoryView: View {
     }
 
     private var upgradeCard: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Label("升級 WHS 差點追蹤", systemImage: "star.circle.fill")
+        VStack(alignment: .leading, spacing: 10) {
+            Label("升級 GoToGolf Premium", systemImage: "star.circle.fill")
                 .font(.headline)
                 .foregroundStyle(DS.gold)
             Text(vm.showUpgradePrompt
-                 ? "你已累積足夠成績,可建立人生首個正式差點指數並持續追蹤。"
-                 : "解鎖 WHS 差點持續追蹤與平均差點分析。")
+                 ? "你已累積足夠成績,Premium 替你把球場資料帶到下一台手機。"
+                 : "一次解鎖跨裝置、可分享、可匯出的進階工具組。")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
+
+            VStack(alignment: .leading, spacing: 6) {
+                benefitRow("iCloud 跨裝置同步差點與球局")
+                benefitRow("匯出 CSV / PDF 給教練或記分本")
+                benefitRow("一張卡同時記 4 位球員 group round")
+            }
+            .padding(.vertical, 2)
+
             Button {
                 Task { await subs.purchase() }
             } label: {
@@ -180,6 +188,17 @@ struct HistoryView: View {
                 .foregroundStyle(DS.fairway)
         }
         .accessibilityIdentifier("upgrade.prompt")
+    }
+
+    private func benefitRow(_ text: String) -> some View {
+        HStack(alignment: .firstTextBaseline, spacing: 8) {
+            Image(systemName: "checkmark.seal.fill")
+                .font(.footnote)
+                .foregroundStyle(DS.fairway)
+            Text(text)
+                .font(.footnote)
+                .foregroundStyle(.primary)
+        }
     }
 }
 
