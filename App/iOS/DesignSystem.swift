@@ -69,6 +69,35 @@ enum DS {
     }
 }
 
+// MARK: - OpenMoji illustration picker
+
+/// 用 OpenMoji 圖示為 finishRound / debrief 摘要挑一張代表插畫。
+/// 規則由好到壞:Eagle 以上 → 🏆／Birdie ≥1 → 🌟／Par 滿足以上 → 🎯／其餘 → ⛳。
+enum OpenMojiIllustration {
+    static func assetName(for stats: RoundStatistics) -> String {
+        if stats.eaglesOrBetter > 0 { return "openmoji-trophy" }
+        if stats.birdies > 0 { return "openmoji-star" }
+        if stats.holesPlayed > 0 && stats.totalToPar <= 0 { return "openmoji-target" }
+        return "openmoji-flag"
+    }
+
+    static func caption(for stats: RoundStatistics) -> String {
+        if stats.eaglesOrBetter > 0 { return "本回合留下 Eagle 等罕見好球" }
+        if stats.birdies > 0 { return "本回合抓到 \(stats.birdies) 隻 Birdie" }
+        if stats.holesPlayed > 0 && stats.totalToPar <= 0 { return "穩定壓在標準桿之內" }
+        return "繼續累積場次,差點才會穩"
+    }
+}
+
+/// OpenMoji 屬於 CC BY-SA 4.0,在 app 內顯示一行 attribution。
+struct OpenMojiCredits: View {
+    var body: some View {
+        Text("插畫 © OpenMoji · CC BY-SA 4.0 · openmoji.org")
+            .font(.caption2)
+            .foregroundStyle(.tertiary)
+    }
+}
+
 // MARK: - View modifiers
 
 /// 年鑑風卡片：米色底 + 圓角 + 內距,給 ScrollView 內的區塊用

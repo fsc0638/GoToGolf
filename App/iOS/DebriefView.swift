@@ -35,10 +35,23 @@ struct DebriefView: View {
 
     private var stats: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("本回合摘要")
-                .font(.footnote.weight(.bold))
-                .foregroundStyle(DS.fairway)
-                .textCase(.uppercase)
+            HStack(spacing: 14) {
+                Image(OpenMojiIllustration.assetName(for: s))
+                    .renderingMode(.original)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 52, height: 52)
+                    .accessibilityHidden(true)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("本回合摘要")
+                        .font(.footnote.weight(.bold))
+                        .foregroundStyle(DS.fairway)
+                        .textCase(.uppercase)
+                    Text(OpenMojiIllustration.caption(for: s))
+                        .font(.subheadline.weight(.medium))
+                        .foregroundStyle(.primary)
+                }
+            }
 
             statRow("已打洞數", "\(s.holesPlayed)")
             statRow("相對標準桿",

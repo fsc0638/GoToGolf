@@ -36,16 +36,33 @@ struct HistoryView: View {
                 }
 
                 Section("本回合") {
-                    Button {
-                        vm.finishAndSave()
-                    } label: {
-                        Label(vm.roundSaved ? "已儲存本回合" : "結束並儲存本回合",
-                              systemImage: vm.roundSaved
-                              ? "checkmark.circle.fill" : "flag.checkered")
-                            .foregroundStyle(vm.roundSaved ? DS.fairway : .primary)
+                    if vm.roundSaved {
+                        HStack(spacing: 12) {
+                            Image("openmoji-trophy")
+                                .renderingMode(.original)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 40, height: 40)
+                                .accessibilityHidden(true)
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("已儲存本回合")
+                                    .font(.headline)
+                                    .foregroundStyle(DS.fairway)
+                                Text("差點與歷史紀錄已更新")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                        .padding(.vertical, 4)
+                        .accessibilityIdentifier("history.finish")
+                    } else {
+                        Button {
+                            vm.finishAndSave()
+                        } label: {
+                            Label("結束並儲存本回合", systemImage: "flag.checkered")
+                        }
+                        .accessibilityIdentifier("history.finish")
                     }
-                    .disabled(vm.roundSaved)
-                    .accessibilityIdentifier("history.finish")
                 }
 
                 Section("歷史球局") {
@@ -68,6 +85,12 @@ struct HistoryView: View {
                             }
                         }
                     }
+                }
+
+                Section {
+                    OpenMojiCredits()
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .listRowBackground(Color.clear)
                 }
             }
             .listStyle(.insetGrouped)
