@@ -7,6 +7,9 @@ struct PastRoundRow: Identifiable {
     let date: Date
     let gross: Int
     let holes: Int
+    /// Gross minus the par of the holes that were actually scored. `nil`
+    /// when the original course is no longer in the catalog.
+    let toPar: Int?
 }
 
 struct ScorecardCell: Identifiable {
@@ -129,9 +132,23 @@ final class RoundViewModel: ObservableObject {
     }
 
     private static func rows(from store: FileRoundStore) -> [PastRoundRow] {
-        store.all().reversed().map {
-            PastRoundRow(id: $0.id, date: $0.round.startedAt,
-                         gross: $0.round.totalGross, holes: $0.round.holesPlayed)
+        let catalog = CourseCatalog.entries()
+        return store.all().reversed().map { synced in
+            let course = catalog.first { $0.course.id == synced.round.courseID }?.course
+            let toPar: Int? = course.map { c in
+                let scoredHoleIDs = Set(synced.round.scores
+                    .filter { $0.gross > 0 }
+                    .map(\.holeNumber))
+                let playedPar = c.holes
+                    .filter { scoredHoleIDs.contains($0.id) }
+                    .reduce(0) { $0 + $1.par }
+                return synced.round.totalGross - playedPar
+            }
+            return PastRoundRow(id: synced.id,
+                                date: synced.round.startedAt,
+                                gross: synced.round.totalGross,
+                                holes: synced.round.holesPlayed,
+                                toPar: toPar)
         }
     }
 }

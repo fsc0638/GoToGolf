@@ -136,10 +136,15 @@ final class ScoringUITests: XCTestCase {
         XCTAssertTrue(debrief.waitForExistence(timeout: 5),
                       "finishAndSave 後沒有自動切到複盤頁")
 
-        // Switching back to 差點 should still surface the saved confirmation.
+        // Switching back to 差點 should still surface the saved confirmation
+        // and the newly-non-empty trend chart.
         openTab("差點")
         XCTAssertTrue(app.staticTexts["已儲存本回合"].waitForExistence(timeout: 3),
                       "差點頁沒有保留已儲存提示")
+        let trend = app.descendants(matching: .any)
+            .matching(identifier: "history.trend").firstMatch
+        XCTAssertTrue(trend.waitForExistence(timeout: 3),
+                      "儲存後差點頁沒有顯示桿數趨勢圖")
     }
 
     func testHistoryAndDebriefTabsLoad() {

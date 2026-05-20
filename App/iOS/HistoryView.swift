@@ -1,4 +1,5 @@
 import SwiftUI
+import Charts
 
 /// Handicap tracking + round history — the premium-flavoured surface. End a
 /// round here to run it through the WHS pipeline and persist it.
@@ -62,6 +63,14 @@ struct HistoryView: View {
                             Label("結束並儲存本回合", systemImage: "flag.checkered")
                         }
                         .accessibilityIdentifier("history.finish")
+                    }
+                }
+
+                if !vm.history.isEmpty {
+                    Section("近期表現") {
+                        TrendChart(rows: vm.history)
+                            .listRowInsets(EdgeInsets(top: 8, leading: 16,
+                                                      bottom: 8, trailing: 16))
                     }
                 }
 
@@ -163,5 +172,76 @@ struct HistoryView: View {
                 .foregroundStyle(DS.fairway)
         }
         .accessibilityIdentifier("upgrade.prompt")
+    }
+}
+
+/// Last-N rounds rendered as bars vs. par.
+///
+/// - Bars are coloured by DS.scoreColor(diff:) when course par is known,
+///   so a glance shows whether the trend is creeping above par.
+/// - Rounds whose course is no longer in the catalog fall back to a
+///   neutral grey gross-only bar.
+private struct TrendChart: View {
+    let rows: [PastRoundRow]
+
+    private struct Point: Identifiable {
+        let id: UUID
+        let index: Int
+        let toPar: Int
+        let gross: Int
+        let hasCoursePar: Bool
+    }
+
+    private var points: [Point] {
+        // rows arrive newest-first; reverse so the chart reads left → right
+        // as oldest → newest. Cap to 20 rounds so the bar density stays sane.
+        let chronological = Array(rows.reversed().suffix(20))
+        return chronological.enumerated().map { idx, row in
+            Point(id: row.id, index: idx + 1,
+                  toPar: row.toPar ?? 0, gross: row.gross,
+                  hasCoursePar: row.toPar != nil)
+        }
+    }
+
+    private var allHavePar: Bool { points.allSatisfy(\.hasCoursePar) }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack {
+                Text(allHavePar ? "對標準桿趨勢" : "桿數趨勢")
+                    .font(.footnote.weight(.semibold))
+                Spacer()
+                Text("最近 \(points.count) 場")
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+            }
+            Chart(points) { p in
+                BarMark(
+                    x: .value("場次", p.index),
+                    y: .value(allHavePar ? "對標準桿" : "桿數",
+                              allHavePar ? p.toPar : p.gross)
+                )
+                .foregroundStyle(
+                    allHavePar && p.hasCoursePar
+                        ? DS.scoreColor(diff: p.toPar)
+                        : Color.secondary
+                )
+                .cornerRadius(3)
+                if allHavePar {
+                    RuleMark(y: .value("Par", 0))
+                        .foregroundStyle(.tertiary)
+                        .lineStyle(StrokeStyle(lineWidth: 0.5, dash: [3, 3]))
+                }
+            }
+            .chartXAxis(.hidden)
+            .chartYAxis {
+                AxisMarks(position: .leading) { _ in
+                    AxisGridLine().foregroundStyle(.quaternary)
+                    AxisValueLabel().font(.caption2)
+                }
+            }
+            .frame(height: 110)
+            .accessibilityIdentifier("history.trend")
+        }
     }
 }
