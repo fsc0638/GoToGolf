@@ -1,35 +1,83 @@
 import Foundation
 import GolfCore
 
-struct CatalogEntry: Identifiable {
-    let summary: CourseSummary
-    let resource: String
-    var id: String { summary.id }
-}
-
-/// Bundled course 圖資 (offline / no API key). Same JSON contract as
-/// `IGolfClient`, decoded via `CourseLayoutParser`, so swapping to the live
-/// iGolf feed later changes nothing downstream.
+/// Scoring-only catalog: bundled Taiwan seed + user-created courses stored
+/// locally. Both share the same `ScoringCatalogParser` schema so user
+/// additions read identically to seeded ones.
 enum CourseCatalog {
-    private static let resources = ["course_pinehill", "course_lakeside"]
+    private static let bundleResource = "courses_taiwan"
+    private static let userDefaultsKey = "GoToGolf.userCatalog.v1"
 
-    private static func data(for resource: String) -> Data? {
-        guard let url = Bundle.main.url(forResource: resource, withExtension: "json")
-        else { return nil }
-        return try? Data(contentsOf: url)
+    // MARK: - Combined listing
+
+    static func entries() -> [CourseListing] {
+        bundled() + userAdded()
     }
 
-    static func entries() -> [CatalogEntry] {
-        resources.compactMap { name in
-            guard let data = data(for: name),
-                  let summary = try? CourseLayoutParser.summary(fromLayoutJSON: data)
-            else { return nil }
-            return CatalogEntry(summary: summary, resource: name)
+    // MARK: - Bundled (read-only)
+
+    private static func bundled() -> [CourseListing] {
+        guard let url = Bundle.main.url(forResource: bundleResource, withExtension: "json"),
+              let data = try? Data(contentsOf: url),
+              let list = try? ScoringCatalogParser.catalog(fromCatalogJSON: data)
+        else { return [] }
+        return list
+    }
+
+    // MARK: - User-added (persisted to UserDefaults)
+
+    private static func userAdded() -> [CourseListing] {
+        guard let data = UserDefaults.standard.data(forKey: userDefaultsKey),
+              let list = try? ScoringCatalogParser.catalog(fromCatalogJSON: data)
+        else { return [] }
+        return list
+    }
+
+    /// Add a user-created course to the local catalog.
+    @discardableResult
+    static func addUserCourse(name: String, region: String?,
+                              pars: [Int]) -> CourseListing? {
+        let id = "USER-\(UUID().uuidString.prefix(8))"
+        let holesJSON = pars.enumerated()
+            .map { #"{ "number": \#($0.offset + 1), "par": \#($0.element) }"# }
+            .joined(separator: ",")
+        let entry = """
+        { "id": "\(id)", "name": "\(name)",
+          "region": \(region.map { "\"\($0)\"" } ?? "null"),
+          "holes": [\(holesJSON)],
+          "ratings": { "white": { "courseRating": \(Double(pars.reduce(0, +))), "slopeRating": 113 } }
         }
+        """
+        guard let courseListing = try? ScoringCatalogParser.listing(
+            fromCourseJSON: Data(entry.utf8)) else { return nil }
+
+        var current = userAdded()
+        current.append(courseListing)
+        if let encoded = encode(current) {
+            UserDefaults.standard.set(encoded, forKey: userDefaultsKey)
+        }
+        return courseListing
     }
 
-    static func course(resource: String) -> Course? {
-        guard let data = data(for: resource) else { return nil }
-        return try? CourseLayoutParser.course(fromLayoutJSON: data)
+    private static func encode(_ list: [CourseListing]) -> Data? {
+        // Re-serialise back to the catalog schema for persistence.
+        let dicts = list.map { l -> [String: Any] in
+            var d: [String: Any] = [
+                "id": l.course.id,
+                "name": l.course.name,
+                "holes": l.course.holes.map { ["number": $0.id, "par": $0.par] }
+            ]
+            if let r = l.region { d["region"] = r }
+            var ratings: [String: Any] = [:]
+            for (tee, r) in l.course.ratings {
+                ratings[tee.rawValue] = [
+                    "courseRating": r.courseRating,
+                    "slopeRating": r.slopeRating
+                ]
+            }
+            if !ratings.isEmpty { d["ratings"] = ratings }
+            return d
+        }
+        return try? JSONSerialization.data(withJSONObject: dicts)
     }
 }

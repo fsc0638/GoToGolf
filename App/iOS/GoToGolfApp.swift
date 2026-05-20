@@ -20,8 +20,9 @@ struct RootView: View {
     }
 }
 
-/// Hosts the round once a course is chosen. A fresh `RoundViewModel` is
-/// bound to the selected course's 圖資.
+/// Hosts the round once a course is chosen. The scoring-only MVP shows
+/// three tabs: 計分（scorecard grid）／複盤（stats）／差點（WHS+history+
+/// subscription）. Map/distance tabs were removed with the GPS layer.
 struct RoundContainer: View {
     @StateObject private var vm: RoundViewModel
     private let onExit: () -> Void
@@ -33,8 +34,6 @@ struct RoundContainer: View {
 
     var body: some View {
         TabView {
-            CourseMapView(vm: vm)
-                .tabItem { Label("球道", systemImage: "map") }
             ScoringView(vm: vm)
                 .tabItem { Label("計分", systemImage: "list.number") }
             DebriefView(vm: vm)
@@ -55,6 +54,5 @@ struct RoundContainer: View {
             .padding(.vertical, 6)
             .background(.bar)
         }
-        .onAppear { vm.start() }
     }
 }

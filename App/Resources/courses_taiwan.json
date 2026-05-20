@@ -1,0 +1,146 @@
+[
+  {
+    "id": "TW-TAMSUI",
+    "name": "淡水高爾夫球場",
+    "region": "新北市",
+    "holes": [
+      { "number": 1, "par": 4 }, { "number": 2, "par": 4 },
+      { "number": 3, "par": 4 }, { "number": 4, "par": 4 },
+      { "number": 5, "par": 3 }, { "number": 6, "par": 5 },
+      { "number": 7, "par": 4 }, { "number": 8, "par": 4 },
+      { "number": 9, "par": 4 },
+      { "number": 10, "par": 4 }, { "number": 11, "par": 4 },
+      { "number": 12, "par": 3 }, { "number": 13, "par": 5 },
+      { "number": 14, "par": 4 }, { "number": 15, "par": 4 },
+      { "number": 16, "par": 3 }, { "number": 17, "par": 5 },
+      { "number": 18, "par": 4 }
+    ],
+    "ratings": { "white": { "courseRating": 70.0, "slopeRating": 122 } }
+  },
+  {
+    "id": "TW-LINKOU",
+    "name": "林口高爾夫俱樂部",
+    "region": "新北市",
+    "holes": [
+      { "number": 1, "par": 4 }, { "number": 2, "par": 4 },
+      { "number": 3, "par": 3 }, { "number": 4, "par": 5 },
+      { "number": 5, "par": 4 }, { "number": 6, "par": 4 },
+      { "number": 7, "par": 3 }, { "number": 8, "par": 5 },
+      { "number": 9, "par": 4 },
+      { "number": 10, "par": 4 }, { "number": 11, "par": 4 },
+      { "number": 12, "par": 3 }, { "number": 13, "par": 5 },
+      { "number": 14, "par": 4 }, { "number": 15, "par": 4 },
+      { "number": 16, "par": 3 }, { "number": 17, "par": 5 },
+      { "number": 18, "par": 4 }
+    ],
+    "ratings": { "white": { "courseRating": 72.0, "slopeRating": 125 } }
+  },
+  {
+    "id": "TW-TASHEE",
+    "name": "大溪高爾夫俱樂部",
+    "region": "桃園市",
+    "holes": [
+      { "number": 1, "par": 4 }, { "number": 2, "par": 4 },
+      { "number": 3, "par": 3 }, { "number": 4, "par": 5 },
+      { "number": 5, "par": 4 }, { "number": 6, "par": 4 },
+      { "number": 7, "par": 3 }, { "number": 8, "par": 5 },
+      { "number": 9, "par": 4 },
+      { "number": 10, "par": 4 }, { "number": 11, "par": 4 },
+      { "number": 12, "par": 3 }, { "number": 13, "par": 5 },
+      { "number": 14, "par": 4 }, { "number": 15, "par": 4 },
+      { "number": 16, "par": 3 }, { "number": 17, "par": 5 },
+      { "number": 18, "par": 4 }
+    ],
+    "ratings": { "white": { "courseRating": 72.0, "slopeRating": 125 } }
+  },
+  {
+    "id": "TW-SUNRISE",
+    "name": "揚昇高爾夫鄉村俱樂部",
+    "region": "桃園市",
+    "holes": [
+      { "number": 1, "par": 4 }, { "number": 2, "par": 4 },
+      { "number": 3, "par": 3 }, { "number": 4, "par": 5 },
+      { "number": 5, "par": 4 }, { "number": 6, "par": 4 },
+      { "number": 7, "par": 3 }, { "number": 8, "par": 5 },
+      { "number": 9, "par": 4 },
+      { "number": 10, "par": 4 }, { "number": 11, "par": 4 },
+      { "number": 12, "par": 3 }, { "number": 13, "par": 5 },
+      { "number": 14, "par": 4 }, { "number": 15, "par": 4 },
+      { "number": 16, "par": 3 }, { "number": 17, "par": 5 },
+      { "number": 18, "par": 4 }
+    ],
+    "ratings": { "white": { "courseRating": 72.0, "slopeRating": 128 } }
+  },
+  {
+    "id": "TW-TAOYUAN",
+    "name": "桃園高爾夫俱樂部",
+    "region": "桃園市",
+    "holes": [
+      { "number": 1, "par": 4 }, { "number": 2, "par": 4 },
+      { "number": 3, "par": 3 }, { "number": 4, "par": 5 },
+      { "number": 5, "par": 4 }, { "number": 6, "par": 4 },
+      { "number": 7, "par": 3 }, { "number": 8, "par": 5 },
+      { "number": 9, "par": 4 },
+      { "number": 10, "par": 4 }, { "number": 11, "par": 4 },
+      { "number": 12, "par": 3 }, { "number": 13, "par": 5 },
+      { "number": 14, "par": 4 }, { "number": 15, "par": 4 },
+      { "number": 16, "par": 3 }, { "number": 17, "par": 5 },
+      { "number": 18, "par": 4 }
+    ],
+    "ratings": { "white": { "courseRating": 71.0, "slopeRating": 122 } }
+  },
+  {
+    "id": "TW-KUOHUA",
+    "name": "國華高爾夫俱樂部",
+    "region": "新竹縣",
+    "holes": [
+      { "number": 1, "par": 4 }, { "number": 2, "par": 4 },
+      { "number": 3, "par": 3 }, { "number": 4, "par": 5 },
+      { "number": 5, "par": 4 }, { "number": 6, "par": 4 },
+      { "number": 7, "par": 3 }, { "number": 8, "par": 5 },
+      { "number": 9, "par": 4 },
+      { "number": 10, "par": 4 }, { "number": 11, "par": 4 },
+      { "number": 12, "par": 3 }, { "number": 13, "par": 5 },
+      { "number": 14, "par": 4 }, { "number": 15, "par": 4 },
+      { "number": 16, "par": 3 }, { "number": 17, "par": 5 },
+      { "number": 18, "par": 4 }
+    ],
+    "ratings": { "white": { "courseRating": 72.0, "slopeRating": 125 } }
+  },
+  {
+    "id": "TW-MERLIN",
+    "name": "美麗華高爾夫俱樂部",
+    "region": "高雄市",
+    "holes": [
+      { "number": 1, "par": 4 }, { "number": 2, "par": 4 },
+      { "number": 3, "par": 3 }, { "number": 4, "par": 5 },
+      { "number": 5, "par": 4 }, { "number": 6, "par": 4 },
+      { "number": 7, "par": 3 }, { "number": 8, "par": 5 },
+      { "number": 9, "par": 4 },
+      { "number": 10, "par": 4 }, { "number": 11, "par": 4 },
+      { "number": 12, "par": 3 }, { "number": 13, "par": 5 },
+      { "number": 14, "par": 4 }, { "number": 15, "par": 4 },
+      { "number": 16, "par": 3 }, { "number": 17, "par": 5 },
+      { "number": 18, "par": 4 }
+    ],
+    "ratings": { "white": { "courseRating": 72.0, "slopeRating": 125 } }
+  },
+  {
+    "id": "TW-TUNGHUA",
+    "name": "東華高爾夫鄉村俱樂部",
+    "region": "桃園市",
+    "holes": [
+      { "number": 1, "par": 4 }, { "number": 2, "par": 4 },
+      { "number": 3, "par": 3 }, { "number": 4, "par": 5 },
+      { "number": 5, "par": 4 }, { "number": 6, "par": 4 },
+      { "number": 7, "par": 3 }, { "number": 8, "par": 5 },
+      { "number": 9, "par": 4 },
+      { "number": 10, "par": 4 }, { "number": 11, "par": 4 },
+      { "number": 12, "par": 3 }, { "number": 13, "par": 5 },
+      { "number": 14, "par": 4 }, { "number": 15, "par": 4 },
+      { "number": 16, "par": 3 }, { "number": 17, "par": 5 },
+      { "number": 18, "par": 4 }
+    ],
+    "ratings": { "white": { "courseRating": 72.0, "slopeRating": 125 } }
+  }
+]

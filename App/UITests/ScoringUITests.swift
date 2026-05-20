@@ -1,8 +1,7 @@
 import XCTest
 
-/// Automates the scoring/navigation checklist. The app now opens on the
-/// course picker, so every test first selects a bundled course to enter the
-/// round. Geofence behaviour is driven by the GPX routes, not scripted here.
+/// Automates the scoring/navigation checklist for the scoring-only MVP.
+/// The map tab and drag-to-score UI are gone; scoring is per-hole steppers.
 final class ScoringUITests: XCTestCase {
     private var app: XCUIApplication!
 
@@ -13,15 +12,15 @@ final class ScoringUITests: XCTestCase {
         selectCourse()
     }
 
-    /// Tap a bundled course on the picker to enter the round.
+    /// Tap a bundled Taiwan course on the picker to enter the round.
     private func selectCourse() {
         let byID = app.descendants(matching: .any)
-            .matching(identifier: "course.TW-PINEHILL").firstMatch
+            .matching(identifier: "course.TW-TAMSUI").firstMatch
         if byID.waitForExistence(timeout: 8) {
             byID.tap()
             return
         }
-        let byName = app.staticTexts["松丘高爾夫俱樂部"]
+        let byName = app.staticTexts["淡水高爾夫球場"]
         XCTAssertTrue(byName.waitForExistence(timeout: 3), "找不到球場選單")
         byName.tap()
     }
@@ -32,32 +31,41 @@ final class ScoringUITests: XCTestCase {
         tab.tap()
     }
 
-    func testScoringTabShowsHoleAndScore() {
+    func testScoringTabShowsScorecardGrid() {
         openTab("計分")
-        XCTAssertTrue(app.staticTexts["scoring.hole"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts["scoring.gross"].exists)
+        XCTAssertTrue(app.staticTexts["scoring.hole.1"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["scoring.gross.1"].exists)
+        XCTAssertTrue(app.staticTexts["scoring.putts.1"].exists)
+        // 18-hole bundled course → hole 18 row exists too.
+        XCTAssertTrue(app.staticTexts["scoring.hole.18"].exists)
     }
 
-    /// The "1-second correction": a single vertical drag anywhere on the
-    /// card must change the gross score.
-    func testVerticalSlideIncreasesGross() {
+    /// Tapping the + button on hole 1's gross stepper must increase the value.
+    func testTappingPlusIncrementsHoleGross() {
         openTab("計分")
-        let gross = app.staticTexts["scoring.gross"]
+        let gross = app.staticTexts["scoring.gross.1"]
         XCTAssertTrue(gross.waitForExistence(timeout: 5))
         XCTAssertEqual(gross.label, "0", "新球局應從 0 桿開始")
 
-        let start = app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.8))
-        let finish = app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.2))
-        start.press(forDuration: 0.1, thenDragTo: finish)   // swipe up = +score
+        let plus = app.buttons["scoring.gross.1.plus"]
+        XCTAssertTrue(plus.waitForExistence(timeout: 2))
+        plus.tap(); plus.tap(); plus.tap()
 
-        expectation(for: NSPredicate(format: "label != %@", "0"),
+        expectation(for: NSPredicate(format: "label == %@", "3"),
                     evaluatedWith: gross)
-        waitForExpectations(timeout: 4)
-        XCTAssertGreaterThan(Int(gross.label) ?? -1, 0, "上滑後總桿應增加")
+        waitForExpectations(timeout: 3)
     }
 
-    func testCourseMapShowsDistance() {
-        openTab("球道")
-        XCTAssertTrue(app.staticTexts["map.distance"].waitForExistence(timeout: 5))
+    func testHistoryAndDebriefTabsLoad() {
+        openTab("差點")
+        XCTAssertTrue(app.staticTexts["handicap.index"].waitForExistence(timeout: 5))
+
+        openTab("複盤")
+        // DebriefView shows the scorecard grid; the stats container has id "debrief.stats".
+        XCTAssertTrue(
+            app.descendants(matching: .any)
+                .matching(identifier: "debrief.stats").firstMatch
+                .waitForExistence(timeout: 5)
+        )
     }
 }

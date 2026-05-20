@@ -1,9 +1,9 @@
 import SwiftUI
 import WatchKit
 
-/// Atomized scoring + AOD 省電圖層. Hole & distance come live from the phone
-/// via `WatchContextReceiver`; wrist-down collapses to a pure-black,
-/// large-type static layer (no map / no animation) to cut AOD drain.
+/// Atomized scoring + AOD 省電圖層. Hole comes live from the phone via
+/// `WatchContextReceiver`; gross is entered locally on the wrist.
+/// Wrist-down collapses to a pure-black static layer.
 struct WatchScoreView: View {
     @StateObject private var receiver = WatchContextReceiver()
     @Environment(\.isLuminanceReduced) private var isAOD
@@ -11,23 +11,21 @@ struct WatchScoreView: View {
 
     var body: some View {
         let hole = receiver.hole
-        let distance = receiver.distanceToCenter
 
         if isAOD {
             VStack(spacing: 2) {
-                Text("\(distance)")
+                Text("H\(hole)")
+                    .font(.system(size: 32, weight: .heavy, design: .rounded))
+                    .foregroundStyle(.white)
+                Text("\(gross)")
                     .font(.system(size: 46, weight: .heavy, design: .rounded))
                     .foregroundStyle(.white)
-                Text("H\(hole) · \(gross)")
-                    .font(.caption2)
-                    .foregroundStyle(.gray)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.black)
         } else {
-            VStack(spacing: 6) {
-                Text("第 \(hole) 洞 · \(distance) 碼")
-                    .font(.caption)
+            VStack(spacing: 8) {
+                Text("第 \(hole) 洞").font(.caption)
                 Text("\(gross)")
                     .font(.system(size: 60, weight: .black, design: .rounded))
                     .monospacedDigit()

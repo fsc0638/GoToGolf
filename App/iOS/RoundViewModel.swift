@@ -9,13 +9,6 @@ struct PastRoundRow: Identifiable {
     let holes: Int
 }
 
-struct HoleMapSnapshot: Equatable {
-    let tee: GeoCoordinate
-    let greenCenter: GeoCoordinate
-    let hazards: [GeoCoordinate]
-    let player: GeoCoordinate?
-}
-
 struct ScorecardCell: Identifiable {
     let id: Int          // hole number
     let par: Int
@@ -23,30 +16,33 @@ struct ScorecardCell: Identifiable {
     let putts: Int
 }
 
-/// Thin binding layer: owns the tested `RoundSession`, feeds it from the
-/// framework adapters, persists finished rounds via `FileRoundStore`, and
-/// derives the Handicap Index through the tested WHS pipeline.
+/// Thin binding layer for the scoring-only MVP. Owns the tested
+/// `RoundSession`, mirrors per-hole scores for SwiftUI, persists finished
+/// rounds via `FileRoundStore`, and derives the Handicap Index through the
+/// tested WHS pipeline. No GPS / motion.
 @MainActor
 final class RoundViewModel: ObservableObject {
     @Published private(set) var currentHole = 1
-    @Published private(set) var distanceToCenter = 0
-    @Published private(set) var gross = 0
     @Published private(set) var pendingSync = 0
     @Published private(set) var handicapIndex: Double?
     @Published private(set) var acceptedScores = 0
     @Published private(set) var roundSaved = false
     @Published private(set) var showUpgradePrompt = false
     @Published private(set) var history: [PastRoundRow] = []
-    @Published private(set) var holeMap: HoleMapSnapshot?
-    @Published private(set) var player: GeoCoordinate?
     let courseName: String
 
-    /// Live post-round analytics for the debrief (tested in GolfCore).
+    private let course: Course
+    private let session: RoundSession
+    private let watch = WatchConnectivityAdapter()
+    private let store: FileRoundStore
+    private let ledgerURL: URL
+    private let deviceID: String
+    private var contextRevision = 0
+
     var debrief: RoundStatistics {
         RoundAnalyzer.analyze(round: session.currentRound, course: course)
     }
 
-    /// Full hole-by-hole card for the iPad cart console.
     var scorecard: [ScorecardCell] {
         course.holes.map { hole in
             let s = session.currentRound.scores.first { $0.holeNumber == hole.id }
@@ -54,18 +50,6 @@ final class RoundViewModel: ObservableObject {
                                  gross: s?.gross ?? 0, putts: s?.putts ?? 0)
         }
     }
-
-    private let course: Course
-    private let session: RoundSession
-    private let location = CoreLocationAdapter()
-    private let motion = MotionAdapter()
-    private let accuracy = DynamicAccuracyController()
-    private let watch = WatchConnectivityAdapter()
-    private let store: FileRoundStore
-    private let ledgerURL: URL
-    private let deviceID: String
-    private var lastCoord: GeoCoordinate?
-    private var contextRevision = 0
 
     init(course: Course, teeBox: TeeBox) {
         self.course = course
@@ -79,47 +63,28 @@ final class RoundViewModel: ObservableObject {
         handicapIndex = ledger.index
         acceptedScores = ledger.acceptedCount
         history = Self.rows(from: store)
-    }
-
-    func start() {
-        location.onUpdate = { [weak self] coord in self?.handle(coord) }
-        motion.onSample = { [weak self] sample in _ = self?.session.ingest(motion: sample) }
-        location.start()
-        motion.start()
         refresh()
     }
 
-    private func handle(_ coord: GeoCoordinate) {
-        let now = Date().timeIntervalSince1970
-        _ = session.updateLocation(coord, now: now)
+    // MARK: - Scoring (per-hole, direct from the scorecard grid)
 
-        if let d = session.greenDistances(playerAt: coord) {
-            distanceToCenter = Int(d.centerYards.rounded())
-            location.apply(tier: accuracy.tier(
-                distanceToGreenYards: d.centerYards, isStationary: false))
-            if let prev = lastCoord {
-                _ = session.confirmSwing(
-                    displacementMeters: prev.distanceMeters(to: coord), at: now)
-            }
-        }
-        lastCoord = coord
-        player = coord
+    func setGross(_ value: Int, hole: Int) {
+        _ = session.setGross(max(0, value), hole: hole)
         refresh()
     }
 
-    func adjustGross(_ value: Int) {
-        session.recordGross(max(0, value))
+    func setPutts(_ value: Int, hole: Int) {
+        _ = session.setPutts(max(0, value), hole: hole)
         refresh()
     }
 
-    func manualJump(to hole: Int) {
-        _ = session.manualJump(
-            to: hole, gesture: SafeGesture(twoFingerLongPress: true, swipe: true))
+    func selectHole(_ hole: Int) {
+        _ = session.selectHole(hole)
         refresh()
     }
 
-    /// End the round: persist it, run the WHS submission pipeline, update
-    /// the Handicap Index, and evaluate the upgrade trigger.
+    // MARK: - Finish & persist
+
     func finishAndSave() {
         let priorHoles = store.all().reduce(0) { $0 + $1.round.holesPlayed }
         let round = session.finishRound()
@@ -147,24 +112,13 @@ final class RoundViewModel: ObservableObject {
 
     private func refresh() {
         currentHole = session.currentHole
-        gross = session.currentRound.scores
-            .first { $0.holeNumber == currentHole }?.gross ?? 0
         pendingSync = session.pendingSyncCount
 
-        if let hole = course.hole(currentHole) {
-            holeMap = HoleMapSnapshot(
-                tee: hole.tee,
-                greenCenter: hole.green.center,
-                hazards: hole.hazards,
-                player: player)
-        }
-
+        // Push the authoritative hole to the watch (overwrite channel —
+        // newest revision wins, kills the jump bug on reconnect).
         contextRevision += 1
         watch.pushContext(WatchContext(
-            currentHole: currentHole,
-            greenCenterYards: Double(distanceToCenter),
-            windAdvice: nil,
-            revision: contextRevision))
+            currentHole: currentHole, revision: contextRevision))
     }
 
     private static func docURL(_ name: String) -> URL {
