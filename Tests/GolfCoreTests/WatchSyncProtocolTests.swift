@@ -4,7 +4,7 @@ import XCTest
 final class WatchSyncProtocolTests: XCTestCase {
 
     private func ctx(_ hole: Int, rev: Int) -> WatchContext {
-        WatchContext(currentHole: hole, greenCenterYards: 150, windAdvice: nil, revision: rev)
+        WatchContext(currentHole: hole, revision: rev)
     }
 
     func testApplicationContextKeepsOnlyNewestRevision() {

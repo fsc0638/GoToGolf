@@ -35,14 +35,7 @@ final class HandicapLedgerTests: XCTestCase {
 
     /// Submission pipeline → ledger → index, the App's persistence path.
     func testSubmissionThenLedgerIndex() throws {
-        let g = GreenPoints(
-            front: GeoCoordinate(latitude: 25, longitude: 121),
-            center: GeoCoordinate(latitude: 25, longitude: 121),
-            back: GeoCoordinate(latitude: 25, longitude: 121))
-        let holes = (1...18).map {
-            Hole(id: $0, par: 4, strokeIndex: $0,
-                 tee: GeoCoordinate(latitude: 25, longitude: 121), green: g)
-        }
+        let holes = (1...18).map { Hole(id: $0, par: 4, strokeIndex: $0) }
         let course = Course(id: "C", name: "T", holes: holes,
                              ratings: [.white: TeeRating(courseRating: 72.0, slopeRating: 113)])
         let round = Round(courseID: "C", teeBox: .white,

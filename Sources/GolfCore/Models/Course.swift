@@ -1,6 +1,6 @@
 import Foundation
 
-/// The tees a beginner can pick. Each carries its own difficulty ratings.
+/// The tees a player can pick. Each carries its own difficulty ratings.
 public enum TeeBox: String, Codable, CaseIterable, Sendable {
     case blue, white, red
 }
@@ -17,46 +17,23 @@ public struct TeeRating: Codable, Hashable, Sendable {
     }
 }
 
-public struct GreenPoints: Codable, Hashable, Sendable {
-    public let front: GeoCoordinate
-    public let center: GeoCoordinate
-    public let back: GeoCoordinate
-
-    public init(front: GeoCoordinate, center: GeoCoordinate, back: GeoCoordinate) {
-        self.front = front
-        self.center = center
-        self.back = back
-    }
-}
-
+/// A hole as needed for manual scoring + WHS handicap calculation.
+/// No geography — the MVP doesn't need tee/green coordinates.
 public struct Hole: Codable, Hashable, Identifiable, Sendable {
     public let id: Int          // 1...18
     public let par: Int
     /// Stroke index / handicap order, 1 = hardest hole.
     public let strokeIndex: Int
-    public let tee: GeoCoordinate
-    public let green: GreenPoints
-    public let hazards: [GeoCoordinate]
 
-    public init(
-        id: Int,
-        par: Int,
-        strokeIndex: Int,
-        tee: GeoCoordinate,
-        green: GreenPoints,
-        hazards: [GeoCoordinate] = []
-    ) {
+    public init(id: Int, par: Int, strokeIndex: Int) {
         self.id = id
         self.par = par
         self.strokeIndex = strokeIndex
-        self.tee = tee
-        self.green = green
-        self.hazards = hazards
     }
 }
 
 public struct Course: Codable, Hashable, Identifiable, Sendable {
-    public let id: String       // iGolf external id
+    public let id: String
     public let name: String
     public let holes: [Hole]
     public let ratings: [TeeBox: TeeRating]

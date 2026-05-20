@@ -1,8 +1,7 @@
 import XCTest
 @testable import GolfCore
 
-/// Boundary cases that cut across modules — the corners most likely to
-/// regress when the framework adapters are wired up later.
+/// Boundary cases that cut across the remaining (scoring-only) modules.
 final class EdgeCaseTests: XCTestCase {
 
     func testHandicapRollingWindowAtTwentyOne() {
@@ -10,24 +9,6 @@ final class EdgeCaseTests: XCTestCase {
         // outside the most-recent-20 window and must be ignored.
         let diffs = [0.5] + Array(repeating: 5.0, count: 20)
         XCTAssertEqual(WHSEngine.handicapIndex(from: diffs), 5.0)
-    }
-
-    func testGeofenceLastHoleHasNoNext() {
-        let lock = GeofenceLock(
-            currentHole: 1,
-            tees: [1: GeoCoordinate(latitude: 25, longitude: 121)]
-        )
-        XCTAssertEqual(lock.tryAutoAdvance(now: 999), .noNextHole)
-        XCTAssertEqual(
-            lock.manualAdvance(gesture: SafeGesture(twoFingerLongPress: true, swipe: true)),
-            .noNextHole
-        )
-    }
-
-    func testSwingConfirmWithoutTentativeIsNil() {
-        let d = SwingDetector()
-        XCTAssertNil(d.confirm(displacementMeters: 50, at: 1.0))
-        XCTAssertFalse(d.isAwaitingDisplacementConfirmation)
     }
 
     func testDirtyQueueDrainWhenEmpty() {
@@ -56,21 +37,5 @@ final class EdgeCaseTests: XCTestCase {
             holesPlayed: 17, playedDifferentialPortion: 10, currentHandicapIndex: 10))
         XCTAssertNil(WHSEngine.differentialForUnfinishedRound(
             holesPlayed: 8, playedDifferentialPortion: 10, currentHandicapIndex: 10))
-    }
-
-    func testWindWithZeroSpeedIsNeutral() {
-        let e = WindCompensationEngine().effect(
-            windSpeedMS: 0, windFromDegrees: 0,
-            shotBearingDegrees: 0, nominalDistanceYards: 150
-        )
-        XCTAssertEqual(e.distanceDeltaYards, 0, accuracy: 1e-9)
-        XCTAssertEqual(e.clubChange, 0)
-    }
-
-    func testAimAdvisorEmptyHazards() {
-        let a = AimAdvisor()
-        let p = GeoCoordinate(latitude: 25, longitude: 121)
-        XCTAssertTrue(a.hazardCarries(from: p, hazards: [], nominalShotYards: 150).isEmpty)
-        XCTAssertNil(a.suggestedLayupYards(from: p, hazards: [], clubCarriesYards: [120]))
     }
 }

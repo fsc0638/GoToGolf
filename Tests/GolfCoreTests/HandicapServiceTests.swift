@@ -6,15 +6,7 @@ final class HandicapServiceTests: XCTestCase {
     private let service = HandicapService()
 
     private func course(ratings: [TeeBox: TeeRating]) -> Course {
-        let g = GreenPoints(
-            front: GeoCoordinate(latitude: 25, longitude: 121),
-            center: GeoCoordinate(latitude: 25, longitude: 121),
-            back: GeoCoordinate(latitude: 25, longitude: 121)
-        )
-        let holes = (1...18).map {
-            Hole(id: $0, par: 4, strokeIndex: $0,
-                 tee: GeoCoordinate(latitude: 25, longitude: 121), green: g)
-        }
+        let holes = (1...18).map { Hole(id: $0, par: 4, strokeIndex: $0) }
         return Course(id: "C", name: "T", holes: holes, ratings: ratings)
     }
 

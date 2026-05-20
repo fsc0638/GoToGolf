@@ -1,12 +1,10 @@
 import Foundation
 
-/// The three WatchConnectivity transport tiers, modelled so their semantics
-/// are testable without WCSession.
+/// WatchConnectivity transport tiers — semantics are testable without WCSession.
 ///
-/// - `message`: real-time, requires reachable. Failure path is the
-///   `DirtyQueue` (already modelled).
-/// - `applicationContext`: overwrite-only — just the newest state survives.
-///   On reconnect both ends snap to it, which is what kills the jump bug.
+/// - `message`: real-time, requires reachable. Failure path is the DirtyQueue.
+/// - `applicationContext`: overwrite-only — only the newest state survives.
+///   On reconnect both ends snap to it; this is what kills the jump bug.
 /// - `userInfo`: background, guaranteed, FIFO (full scorecard / trend).
 public enum SyncChannel: String, Codable, Sendable {
     case message
@@ -24,19 +22,16 @@ public struct SyncEnvelope<Payload: Codable>: Codable {
     }
 }
 
-/// The compact, overwrite-style state the phone pushes to the watch.
+/// The compact, overwrite-style state the phone pushes to the watch. In the
+/// scoring-only MVP this is just the current hole; richer fields can be
+/// added back when geography returns.
 public struct WatchContext: Codable, Equatable, Sendable {
     public var currentHole: Int
-    public var greenCenterYards: Double
-    public var windAdvice: String?
-    /// Monotonic; a higher revision is strictly newer. Lets us ignore
-    /// out-of-order delivery.
+    /// Monotonic; a higher revision is strictly newer.
     public var revision: Int
 
-    public init(currentHole: Int, greenCenterYards: Double, windAdvice: String?, revision: Int) {
+    public init(currentHole: Int, revision: Int) {
         self.currentHole = currentHole
-        self.greenCenterYards = greenCenterYards
-        self.windAdvice = windAdvice
         self.revision = revision
     }
 }
@@ -64,8 +59,7 @@ public struct HoleStateSnapshot: Equatable, Sendable {
 }
 
 /// On reconnect the watch reconciles its local hole against the authoritative
-/// pushed context. A *newer* context moves the hole; a stale one can't —
-/// this is the systemic fix for the iCaddie-style jump bug.
+/// pushed context. A newer context moves the hole; a stale one can't.
 public struct ContextReconciler {
     public init() {}
 

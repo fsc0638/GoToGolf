@@ -4,15 +4,7 @@ import XCTest
 final class ScorecardManagerTests: XCTestCase {
 
     private func course() -> Course {
-        let g = GreenPoints(
-            front: GeoCoordinate(latitude: 25, longitude: 121),
-            center: GeoCoordinate(latitude: 25, longitude: 121),
-            back: GeoCoordinate(latitude: 25, longitude: 121)
-        )
-        let holes = (1...3).map {
-            Hole(id: $0, par: 4, strokeIndex: $0,
-                 tee: GeoCoordinate(latitude: 25, longitude: 121), green: g)
-        }
+        let holes = (1...3).map { Hole(id: $0, par: 4, strokeIndex: $0) }
         return Course(id: "C", name: "T", holes: holes,
                       ratings: [.white: TeeRating(courseRating: 72, slopeRating: 113)])
     }
