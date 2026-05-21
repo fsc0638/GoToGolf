@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  GoToGolf app icon — paper-sticker stack. iOS 17/18 sticker-keyboard
+  aesthetic: every shape is its own die-cut sticker with a chunky
+  cream border + soft drop shadow, lifted off a yearbook paper canvas.
+  Slight asymmetric rotation on the flag for "stuck on" charm.
+  Original artwork.
+-->
+<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="paperI" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#FCF4DD"/>
+      <stop offset="100%" stop-color="#EFDFB4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- yearbook paper backdrop -->
+  <rect width="1024" height="1024" fill="url(#paperI)"/>
+
+  <!-- ================  GRASS MOUND  ================ -->
+  <!-- drop shadow -->
+  <path d="M120,840
+           C 120,700  330,650  540,650
+           C 770,650  920,700  920,840
+           Z"
+        fill="#000000" opacity="0.18"
+        transform="translate(10,16)"/>
+  <!-- cream sticker border -->
+  <path d="M120,840
+           C 120,700  330,650  540,650
+           C 770,650  920,700  920,840
+           Z"
+        fill="#FCF4DD"
+        stroke="#FCF4DD" stroke-width="20" stroke-linejoin="round"/>
+  <!-- mound fill -->
+  <path d="M132,840
+           C 132,712  338,664  540,664
+           C 770,664  908,712  908,840
+           Z"
+        fill="#3F8050"/>
+  <!-- top highlight on the mound -->
+  <path d="M210,720
+           C 320,690  430,678  560,680
+           C 690,682  790,700  860,720"
+        stroke="#A3D5A8" stroke-width="14" stroke-linecap="round"
+        fill="none" opacity="0.7"/>
+
+  <!-- ================  FLAG POLE  ================ -->
+  <!-- shadow -->
+  <rect x="468" y="180" width="38" height="660" rx="19"
+        fill="#000000" opacity="0.18"
+        transform="translate(10,16)"/>
+  <!-- cream border -->
+  <rect x="468" y="180" width="38" height="660" rx="19" fill="#FCF4DD"/>
+  <!-- pole fill -->
+  <rect x="478" y="190" width="18" height="640" rx="9" fill="#9C9A91"/>
+  <!-- crisp highlight -->
+  <rect x="482" y="200" width="4" height="620" rx="2"
+        fill="#FFFFFF" opacity="0.6"/>
+
+  <!-- ================  HOLE (under pole base, on mound)  ================ -->
+  <ellipse cx="487" cy="822" rx="48" ry="11" fill="#0D2614"/>
+
+  <!-- ================  PENNANT FLAG (slightly tilted)  ================ -->
+  <g transform="rotate(-4 500 320)">
+    <!-- drop shadow -->
+    <path d="M484,200
+             L880,250
+             L880,400
+             L484,450
+             Z"
+          fill="#000000" opacity="0.22"
+          transform="translate(12,16)"/>
+    <!-- cream sticker border -->
+    <path d="M484,200
+             L880,250
+             L880,400
+             L484,450
+             Z"
+          fill="#FCF4DD"
+          stroke="#FCF4DD" stroke-width="20" stroke-linejoin="round"/>
+    <!-- swallow-tail notch (revealing the background through) -->
+    <path d="M880,250
+             L756,322
+             L880,400
+             Z"
+          fill="url(#paperI)"
+          stroke="#FCF4DD" stroke-width="20" stroke-linejoin="round"/>
+    <!-- flag body fill -->
+    <path d="M496,216
+             L863,262
+             L780,322
+             L863,388
+             L496,434
+             Z"
+          fill="#E25444"/>
+    <!-- bright top highlight strip -->
+    <path d="M496,216
+             L820,256
+             L760,272
+             L496,240
+             Z"
+          fill="#FFFFFF" opacity="0.25"/>
+    <!-- underside shadow strip -->
+    <path d="M496,434
+             L780,398
+             L760,406
+             L496,442
+             Z"
+          fill="#000000" opacity="0.18"/>
+  </g>
+
+  <!-- ================  GOLF BALL  ================ -->
+  <!-- shadow -->
+  <ellipse cx="690" cy="816" rx="74" ry="14" fill="#000000" opacity="0.22"/>
+  <!-- cream sticker border -->
+  <circle cx="690" cy="770" r="70" fill="#FCF4DD"/>
+  <!-- ball -->
+  <circle cx="690" cy="770" r="58" fill="#FFFFFF"/>
+  <!-- specular highlight -->
+  <ellipse cx="666" cy="748" rx="18" ry="11"
+           fill="#FFFFFF" opacity="0.85"
+           transform="rotate(-25 666 748)"/>
+  <!-- dimples -->
+  <g fill="#000000" opacity="0.18">
+    <circle cx="710" cy="760" r="4"/>
+    <circle cx="694" cy="788" r="4"/>
+    <circle cx="670" cy="780" r="4"/>
+  </g>
+</svg>
