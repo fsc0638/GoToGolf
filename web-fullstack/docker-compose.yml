@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    container_name: gotogolf-web
+    ports:
+      - "638:638"
+    environment:
+      - DATABASE_URL=file:/app/prisma/dev.db
+      - NEXTAUTH_URL=http://localhost:638
+      - NEXTAUTH_SECRET=change-me
+      - DEV_ADMIN_EMAIL=admin@gotogolf.local
+      - DEV_ROLE_OVERRIDE=ADMIN
+    volumes:
+      - ./prisma:/app/prisma
+    command: sh -c "npx prisma generate && npm run build && npm run start"

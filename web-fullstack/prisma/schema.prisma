@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  COACH
+  PLAYER
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String?
+  role         Role     @default(PLAYER)
+  passwordHash String
+  rounds       Round[]
+  createdAt    DateTime @default(now())
+}
+
+model Round {
+  id          String      @id @default(cuid())
+  title       String
+  courseName  String
+  holeCount   Int         @default(18)
+  currentHole Int         @default(1)
+  totalGross  Int         @default(0)
+  totalPar    Int         @default(72)
+  status      RoundStatus @default(IN_PROGRESS)
+  userId      String?
+  user        User?       @relation(fields: [userId], references: [id])
+  holeScores  HoleScore[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model HoleScore {
+  id      String @id @default(cuid())
+  roundId String
+  hole    Int
+  par     Int
+  gross   Int
+  round   Round  @relation(fields: [roundId], references: [id], onDelete: Cascade)
+
+  @@unique([roundId, hole])
+}
+
+enum RoundStatus {
+  IN_PROGRESS
+  FINISHED
+}

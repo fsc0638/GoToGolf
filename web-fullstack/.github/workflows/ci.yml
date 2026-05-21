@@ -1,0 +1,35 @@
+name: ci
+
+on:
+  push:
+    branches: ["main", "hermes"]
+  pull_request:
+
+jobs:
+  web-ci:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web-fullstack
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web-fullstack/package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      - name: Prisma generate
+        run: npx prisma generate
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build

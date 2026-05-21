@@ -1,0 +1,41 @@
+openapi: 3.0.3
+info:
+  title: GoToGolf Web API
+  version: 0.2.0
+  description: Enterprise phase API with RBAC and observability baseline.
+servers:
+  - url: http://localhost:638
+paths:
+  /api/rounds:
+    get:
+      summary: List rounds
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create round (requires COACH+)
+      responses:
+        '201':
+          description: Created
+        '403':
+          description: Forbidden
+  /api/rounds/{id}/score:
+    patch:
+      summary: Update hole score
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+  /api/admin/health:
+    get:
+      summary: Admin service health (requires ADMIN)
+      responses:
+        '200':
+          description: OK
+        '403':
+          description: Forbidden
