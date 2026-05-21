@@ -27,10 +27,11 @@ targets:
       path: iOS/Info.plist
       properties:
         UILaunchScreen: {}
-        NSLocationWhenInUseUsageDescription: "顯示你在球道上的即時距離與策略"
-        NSMotionUsageDescription: "偵測揮桿以協助自動計分"
         CFBundleDevelopmentRegion: "zh-Hant"
         CFBundleLocalizations: ["zh-Hant", "en"]
+        # No location/motion usage — scoring-only MVP. Declaring NO export
+        # compliance keeps TestFlight uploads from re-prompting each build.
+        ITSAppUsesNonExemptEncryption: false
     settings:
       base:
         TARGETED_DEVICE_FAMILY: "1,2"   # iPhone + iPad

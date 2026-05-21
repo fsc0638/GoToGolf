@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  GoToGolf App Store screenshot template — 6.7" iPhone (1290 × 2796).
+
+  How to use:
+  1. Take a simulator screenshot at this exact resolution (iPhone 17 Pro
+     Max / 17 Pro / Air all match this).
+  2. Open this SVG in Figma / Sketch / Inkscape.
+  3. Replace the inner <image href="..."/> with your screenshot.
+  4. Update the two text strings (zh-Hant headline + en subhead) for
+     each of the six screens. Recommended pairs are in docs/
+     store-listing.md §5.
+  5. Export the composed SVG as PNG at 1290×2796.
+
+  Visual language matches DesignSystem.swift: fairway-green title band,
+  cream subhead, monospaced digits on the badge.
+-->
+<svg viewBox="0 0 1290 2796" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     font-family="-apple-system, 'PingFang TC', 'Noto Sans TC', sans-serif">
+  <defs>
+    <linearGradient id="paperBG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#FCF4DD"/>
+      <stop offset="100%" stop-color="#E8D5A0"/>
+    </linearGradient>
+    <linearGradient id="bandFairway" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#3F8050"/>
+      <stop offset="100%" stop-color="#244E2E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- yearbook paper canvas -->
+  <rect width="1290" height="2796" fill="url(#paperBG)"/>
+
+  <!-- ============ TITLE BAND (top 18%) ============ -->
+  <rect x="0" y="0" width="1290" height="500" fill="url(#bandFairway)"/>
+
+  <!-- zh-Hant headline -->
+  <text x="645" y="200"
+        text-anchor="middle"
+        font-size="120" font-weight="800"
+        fill="#FCF4DD">逐洞計分,即時看到 ±par</text>
+
+  <!-- en subhead -->
+  <text x="645" y="320"
+        text-anchor="middle"
+        font-size="64" font-weight="500"
+        fill="#FCF4DD" opacity="0.85">Score each hole, see par-diff live</text>
+
+  <!-- small badge (e.g. "1 / 6") -->
+  <g transform="translate(1090, 120)">
+    <rect width="120" height="60" rx="30"
+          fill="#D6A227" opacity="0.95"/>
+    <text x="60" y="42" text-anchor="middle"
+          font-size="36" font-weight="700"
+          fill="#244E2E"
+          font-family="ui-monospace, Menlo, monospace">1/6</text>
+  </g>
+
+  <!-- ============ DEVICE SCREENSHOT SLOT ============ -->
+  <!-- The actual screenshot goes here. Replace the placeholder rect with
+       <image xlink:href="screenshot-1.png" x="100" y="600" .../>
+       or paste the screenshot in your editor. -->
+  <rect x="100" y="600" width="1090" height="2050" rx="60"
+        fill="#FFFFFF" stroke="#1F4426" stroke-width="6"
+        opacity="0.5"/>
+  <text x="645" y="1625"
+        text-anchor="middle"
+        font-size="80" font-weight="700"
+        fill="#244E2E" opacity="0.6">↑ paste screenshot ↑</text>
+
+  <!-- ============ FOOTER STRIP ============ -->
+  <text x="645" y="2740"
+        text-anchor="middle"
+        font-size="40" font-weight="600"
+        fill="#244E2E" opacity="0.6">GoToGolf · 業餘高爾夫計分</text>
+</svg>

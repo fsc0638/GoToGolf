@@ -23,10 +23,8 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>顯示你在球道上的即時距離與策略</string>
-	<key>NSMotionUsageDescription</key>
-	<string>偵測揮桿以協助自動計分</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>UILaunchScreen</key>
 	<dict/>
 </dict>
