@@ -8,6 +8,7 @@ struct CourseListView: View {
 
     @State private var entries: [CourseListing] = CourseCatalog.entries()
     @State private var showingCreate = false
+    @State private var editingPar: CourseListing?
 
     private var grouped: [(region: String, courses: [CourseListing])] {
         let by = Dictionary(grouping: entries, by: { $0.region ?? "其他" })
@@ -33,6 +34,14 @@ struct CourseListView: View {
                                         .accessibilityIdentifier(
                                             "course.delete.\(entry.course.id)")
                                     }
+                                    Button {
+                                        editingPar = entry
+                                    } label: {
+                                        Label("編輯 Par", systemImage: "pencil")
+                                    }
+                                    .tint(DS.fairway)
+                                    .accessibilityIdentifier(
+                                        "course.editpar.\(entry.course.id)")
                                 }
                         }
                     } header: {
@@ -68,6 +77,11 @@ struct CourseListView: View {
                 CreateCourseView { listing in
                     entries = CourseCatalog.entries()
                     onSelect(listing.course)
+                }
+            }
+            .sheet(item: $editingPar) { entry in
+                EditCourseParView(listing: entry) {
+                    entries = CourseCatalog.entries()
                 }
             }
         }

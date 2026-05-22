@@ -205,6 +205,41 @@ final class ScoringUITests: XCTestCase {
         waitForExpectations(timeout: 3)
     }
 
+    /// A bundled course's per-hole par must be editable from the picker:
+    /// swipe the row → 編輯 Par → the override sheet opens and saves.
+    func testBundledCourseParIsEditable() {
+        let back = app.buttons["round.exitToCourses"]
+        XCTAssertTrue(back.waitForExistence(timeout: 5))
+        back.tap()
+
+        // 58-course catalog — scroll until the target row is rendered.
+        let row = app.descendants(matching: .any)
+            .matching(identifier: "course.TW-TAIWAN-GC").firstMatch
+        var swipes = 0
+        while !row.exists && swipes < 8 {
+            app.swipeUp()
+            swipes += 1
+        }
+        XCTAssertTrue(row.waitForExistence(timeout: 4), "找不到球場列")
+
+        // Coordinate-drag left to surface the trailing swipe action.
+        let start = row.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5))
+        let end = row.coordinate(withNormalizedOffset: CGVector(dx: -2.0, dy: 0.5))
+        start.press(forDuration: 0.05, thenDragTo: end)
+
+        let edit = app.buttons["course.editpar.TW-TAIWAN-GC"]
+        XCTAssertTrue(edit.waitForExistence(timeout: 2), "swipe 沒有出現編輯 Par")
+        edit.tap()
+
+        let save = app.buttons["editpar.save"]
+        XCTAssertTrue(save.waitForExistence(timeout: 3), "編輯 Par sheet 沒有開啟")
+        save.tap()
+
+        // Saving dismisses the sheet.
+        expectation(for: NSPredicate(format: "exists == false"), evaluatedWith: save)
+        waitForExpectations(timeout: 3)
+    }
+
     func testHistoryAndDebriefTabsLoad() {
         openTab("差點")
         XCTAssertTrue(app.staticTexts["handicap.index"].waitForExistence(timeout: 5))
