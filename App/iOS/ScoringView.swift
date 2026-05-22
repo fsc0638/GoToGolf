@@ -37,6 +37,11 @@ struct ScoringView: View {
                         )
                         .listRowBackground(DS.cream.opacity(cell.gross > 0 ? 0.6 : 0.3))
                     }
+                } footer: {
+                    Label("每洞 Par 為標準範本,請於選球場頁編輯校正成現場記分卡。",
+                          systemImage: "info.circle")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
                 }
             }
             .listStyle(.insetGrouped)

@@ -14,10 +14,10 @@ final class ScoringUITests: XCTestCase {
 
     /// Tap a bundled Taiwan course on the picker to enter the round.
     /// Scrolls the list when prior test runs have grown the user catalog
-    /// enough to push 淡水 off-screen.
+    /// enough to push 臺灣高爾夫俱樂部 off-screen.
     private func selectCourse() {
         let byID = app.descendants(matching: .any)
-            .matching(identifier: "course.TW-TAMSUI").firstMatch
+            .matching(identifier: "course.TW-TAIWAN-GC").firstMatch
         var swipes = 0
         while !byID.exists && swipes < 8 {
             app.swipeUp()
@@ -27,7 +27,7 @@ final class ScoringUITests: XCTestCase {
             byID.tap()
             return
         }
-        let byName = app.staticTexts["淡水高爾夫球場"]
+        let byName = app.staticTexts["臺灣高爾夫俱樂部"]
         XCTAssertTrue(byName.waitForExistence(timeout: 3), "找不到球場選單")
         byName.tap()
     }
@@ -77,7 +77,7 @@ final class ScoringUITests: XCTestCase {
         XCTAssertTrue(gross.waitForExistence(timeout: 5))
         XCTAssertEqual(gross.label, "0", "未輸入桿數時累積桿數應為 0")
 
-        // Drive hole 1 (Par 4 on the bundled 淡水 course) to gross = 5.
+        // Drive hole 1 (Par 4 on the bundled course template) to gross = 5.
         let plus = app.buttons["scoring.gross.1.plus"]
         XCTAssertTrue(plus.waitForExistence(timeout: 2))
         for _ in 0..<5 { plus.tap() }
