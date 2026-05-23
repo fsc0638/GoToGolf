@@ -8,6 +8,10 @@ final class ScoringUITests: XCTestCase {
     override func setUpWithError() throws {
         continueAfterFailure = false
         app = XCUIApplication()
+        // The picker now gates first-time picks behind a par-confirmation
+        // sheet so users can't silently score against the synthetic
+        // bundled template. Tests skip the gate via this flag.
+        app.launchArguments.append("--ui-tests-bypass-confirm-par")
         app.launch()
         selectCourse()
     }

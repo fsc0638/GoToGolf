@@ -8,6 +8,13 @@ enum CourseCatalog {
     private static let bundleResource = "courses_taiwan"
     private static let userDefaultsKey = "GoToGolf.userCatalog.v1"
     private static let parOverridesKey = "GoToGolf.courseParOverrides.v1"
+    private static let confirmedParsKey = "GoToGolf.confirmedCoursePars.v1"
+
+    /// UI tests pass this flag so they can enter bundled courses without
+    /// first being asked to dismiss the par-confirmation sheet.
+    private static var bypassConfirmForTests: Bool {
+        ProcessInfo.processInfo.arguments.contains("--ui-tests-bypass-confirm-par")
+    }
 
     // MARK: - Combined listing
 
@@ -104,11 +111,48 @@ enum CourseCatalog {
 
     /// Save corrected per-hole pars for any course (bundled or user-added).
     /// `pars.count` must match the course's hole count to take effect.
+    /// Saving also marks the course as par-confirmed so subsequent picks
+    /// skip the first-time-setup gate.
     static func updatePars(courseID: String, pars: [Int]) {
         var all = parOverrides()
         all[courseID] = pars
         if let data = try? JSONEncoder().encode(all) {
             UserDefaults.standard.set(data, forKey: parOverridesKey)
+        }
+        markParConfirmed(courseID: courseID)
+    }
+
+    // MARK: - Par confirmation (first-time setup gate)
+    //
+    // The bundled JSON ships a synthetic par template (real per-hole data
+    // for Taiwan clubs isn't published). To avoid silently scoring against
+    // fake pars, every bundled course must be par-confirmed by the player
+    // — on first pick the app pops the editor with the real scorecard.
+    // User-added courses are confirmed-by-creation (the player just typed
+    // those pars in CreateCourseView).
+
+    private static func confirmedSet() -> Set<String> {
+        guard let data = UserDefaults.standard.data(forKey: confirmedParsKey),
+              let arr = try? JSONDecoder().decode([String].self, from: data)
+        else { return [] }
+        return Set(arr)
+    }
+
+    /// Has the player vouched for this course's per-hole pars (either
+    /// explicitly via the editor, or implicitly because they just created
+    /// the course themselves)?
+    static func isParConfirmed(courseID: String) -> Bool {
+        if bypassConfirmForTests { return true }
+        if isUserAdded(courseID) { return true }
+        return confirmedSet().contains(courseID)
+    }
+
+    /// Record that the player has reviewed/confirmed this course's pars.
+    static func markParConfirmed(courseID: String) {
+        var set = confirmedSet()
+        guard set.insert(courseID).inserted else { return }
+        if let data = try? JSONEncoder().encode(Array(set)) {
+            UserDefaults.standard.set(data, forKey: confirmedParsKey)
         }
     }
 
