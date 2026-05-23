@@ -1,0 +1,1172 @@
+{
+  "extractedAt": "2026-05-23",
+  "source": {
+    "name": "運動部核准開放使用及籌設高爾夫球場名冊（115年1月）",
+    "file": "docs/115.01.19高爾夫球場名冊公布版.pdf",
+    "publisher": "中華民國運動部",
+    "totalCourses": 57
+  },
+  "schemaNotes": "Directory fields (no, name, region, address, operator, approvedAreaHa, approvedHoles, phone) are extracted directly from the source PDF and treated as verified. The scorecard block (totalPar, per-tee yardage, per-hole par) is filled in only when a corroborating official source can be reached — see scorecard.sourceURL and scorecard.confidence.",
+  "courses": [
+    {
+      "no": 1,
+      "name": "礁溪高爾夫球場",
+      "region": "宜蘭縣",
+      "address": "宜蘭縣礁溪鄉林美村林尾路156號",
+      "operator": "亞達育樂事業股份有限公司",
+      "approvedAreaHa": 49.929024,
+      "approvedHoles": 18,
+      "phone": "(03)9886691",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 2,
+      "name": "新淡水高爾夫球場",
+      "region": "新北市",
+      "address": "新北市淡水區八勢里3鄰八勢路300號",
+      "operator": "淡水企業股份有限公司",
+      "approvedAreaHa": 55.5927,
+      "approvedHoles": 18,
+      "phone": "(02)28092466",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 3,
+      "name": "林口高爾夫球場",
+      "region": "新北市",
+      "address": "新北市林口區湖北里後湖50之1號",
+      "operator": "林口育樂事業股份有限公司",
+      "approvedAreaHa": 72.1842,
+      "approvedHoles": 18,
+      "phone": "(02)26011211",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 4,
+      "name": "北投國華高爾夫俱樂部球場",
+      "region": "新北市",
+      "address": "新北市淡水區坪頂里小坪頂23之1號",
+      "operator": "大華觀光事業股份有限公司",
+      "approvedAreaHa": 30.719,
+      "approvedHoles": 18,
+      "phone": "(02)86261281",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 5,
+      "name": "臺灣高爾夫俱樂部球場",
+      "region": "新北市",
+      "address": "新北市淡水區油車里中正路一段6巷32號",
+      "operator": "財團法人臺灣高爾夫俱樂部",
+      "approvedAreaHa": 51.7677,
+      "approvedHoles": 18,
+      "phone": "(02)26212211",
+      "officialSite": "https://tgccgolf.com/",
+      "scorecard": {
+        "confidence": "partial",
+        "totalPar": 72,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": "https://tgccgolf.com/",
+        "notes": "Par 72 confirmed (Tourism Administration directory + club site). Per-hole table not published on tgccgolf.com/hole/ — page shows only prose descriptions + photos."
+      }
+    },
+    {
+      "no": 6,
+      "name": "黃金海岸高爾夫球場",
+      "region": "新北市",
+      "address": "新北市石門區草里里草埔尾5號",
+      "operator": "北海育樂股份有限公司",
+      "approvedAreaHa": 70.39791,
+      "approvedHoles": 18,
+      "phone": "(02)26382930",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 7,
+      "name": "八里國際高爾夫球場",
+      "region": "新北市",
+      "address": "新北市林口區嘉寶里寶斗坑91號",
+      "operator": "北濱育樂事業股份有限公司",
+      "approvedAreaHa": 84.2142,
+      "approvedHoles": 18,
+      "phone": "(02)26052222",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 8,
+      "name": "東華高爾夫球場",
+      "region": "新北市",
+      "address": "新北市林口區下福里7鄰93-1號",
+      "operator": "東華國際高爾夫育樂股份有限公司",
+      "approvedAreaHa": 69.0631,
+      "approvedHoles": 18,
+      "phone": "(02)26062558",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 9,
+      "name": "幸福高爾夫球場",
+      "region": "新北市",
+      "address": "新北市林口區下福里71-1號",
+      "operator": "佳福育樂事業股份有限公司",
+      "approvedAreaHa": 107.6687,
+      "approvedHoles": 27,
+      "phone": "(02)26062345",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 10,
+      "name": "翡翠高爾夫球場",
+      "region": "新北市",
+      "address": "新北市萬里區北基里仁七街16-1號",
+      "operator": "磐達企業股份有限公司",
+      "approvedAreaHa": 65.9276,
+      "approvedHoles": 18,
+      "phone": "(02)24924935",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 11,
+      "name": "美麗華高爾夫球場",
+      "region": "新北市",
+      "address": "新北市林口區下福里下福路9號",
+      "operator": "美麗華開發股份有限公司",
+      "approvedAreaHa": 82.1292,
+      "approvedHoles": 18,
+      "phone": "(02)26063456",
+      "officialSite": "https://www.miramargolf.com/",
+      "scorecard": {
+        "confidence": "partial",
+        "totalPar": 72,
+        "totalYardageByTee": {
+          "championship_A": 6835
+        },
+        "tees": [
+          "championship_A"
+        ],
+        "holes": [],
+        "sourceURL": "http://www.gcs.org.tw/gcs/m_miramar.html",
+        "notes": "Designed by Jack Nicklaus. A course total 6,835 yds. B course (see #12 蓬萊) total 6,777 yds. Per-hole pars not reachable through GCS (Big5 encoding garbled) or club site."
+      }
+    },
+    {
+      "no": 12,
+      "name": "蓬萊高爾夫球場",
+      "region": "新北市",
+      "address": "新北市林口區下福里下福路9號",
+      "operator": "美麗華開發股份有限公司",
+      "approvedAreaHa": 82.6605,
+      "approvedHoles": 18,
+      "phone": "(02)26063456",
+      "officialSite": "https://www.miramargolf.com/",
+      "scorecard": {
+        "confidence": "partial",
+        "totalPar": 72,
+        "totalYardageByTee": {
+          "championship_B": 6777
+        },
+        "tees": [
+          "championship_B"
+        ],
+        "holes": [],
+        "sourceURL": "http://www.gcs.org.tw/gcs/m_miramar.html",
+        "notes": "Sister 18 of the Miramar facility (Nicklaus design). Same operator/address as #11."
+      }
+    },
+    {
+      "no": 13,
+      "name": "大屯高爾夫球場",
+      "region": "新北市",
+      "address": "新北市淡水區埤島里商工路309號",
+      "operator": "大屯育樂開發股份有限公司",
+      "approvedAreaHa": 24.8756,
+      "approvedHoles": 13,
+      "phone": "(02)26213271",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 14,
+      "name": "淡水濱海高爾夫球場",
+      "region": "新北市",
+      "address": "新北市石門區尖鹿里尖仔仔路10號",
+      "operator": "長盛育樂股份有限公司",
+      "approvedAreaHa": 59.7595,
+      "approvedHoles": 18,
+      "phone": "(02)26380679",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 15,
+      "name": "台北高爾夫俱樂部球場",
+      "region": "桃園市",
+      "address": "桃園市蘆竹區坑子赤塗崎34之1號",
+      "operator": "財團法人台北高爾夫俱樂部",
+      "approvedAreaHa": 170.0,
+      "approvedHoles": 36,
+      "phone": "(03)3241311",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 16,
+      "name": "長庚高爾夫俱樂部球場",
+      "region": "桃園市",
+      "address": "桃園市龜山區舊路里長庚球場路66號",
+      "operator": "育志開發股份有限公司",
+      "approvedAreaHa": 116.6979,
+      "approvedHoles": 27,
+      "phone": "(03)3296358",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 17,
+      "name": "桃園高爾夫球場",
+      "region": "桃園市",
+      "address": "桃園市龍潭區九龍里29鄰悅華路100號",
+      "operator": "桃園育樂事業股份有限公司",
+      "approvedAreaHa": 76.9284,
+      "approvedHoles": 27,
+      "phone": "(03)4803388",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 18,
+      "name": "第一高爾夫球場",
+      "region": "桃園市",
+      "address": "桃園市蘆竹區坑子村7鄰貓尾崎50號",
+      "operator": "國盛育樂股份有限公司",
+      "approvedAreaHa": 118.8042,
+      "approvedHoles": 36,
+      "phone": "(03)3245295",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 19,
+      "name": "揚昇高爾夫球場",
+      "region": "桃園市",
+      "address": "桃園市楊梅區揚昇路256號",
+      "operator": "揚昇育樂事業股份有限公司",
+      "approvedAreaHa": 94.431,
+      "approvedHoles": 18,
+      "phone": "(03)4780099",
+      "officialSite": "https://sunrise-golf.com.tw/",
+      "scorecard": {
+        "confidence": "partial",
+        "totalPar": 72,
+        "totalYardageByTee": {
+          "gold": 7200,
+          "blue": 6610,
+          "white": 6110
+        },
+        "tees": [
+          "gold",
+          "blue",
+          "white"
+        ],
+        "holes": [],
+        "sourceURL": "https://www.golf007.com/golf_course/taiwan/sunrise/",
+        "notes": "Robert Trent Jones Jr. design. Gold 7,200y, Blue 6,610y (front 3,302 / back 3,308), White ~6,110y. Per-hole detail blocked: sunrise-golf.com.tw returns 403 to automated fetch."
+      }
+    },
+    {
+      "no": 20,
+      "name": "統帥高爾夫球場",
+      "region": "桃園市",
+      "address": "桃園市蘆竹區營盤里六福一路195巷1弄8號",
+      "operator": "統帥育樂股份有限公司",
+      "approvedAreaHa": 56.3701,
+      "approvedHoles": 18,
+      "phone": "(03)3221786",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 21,
+      "name": "楊梅高爾夫球場",
+      "region": "桃園市",
+      "address": "桃園市楊梅區東流里13鄰崩坡73號",
+      "operator": "國盛育樂股份有限公司",
+      "approvedAreaHa": 78.19279,
+      "approvedHoles": 27,
+      "phone": "(03)4780541",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 22,
+      "name": "永漢高爾夫球場",
+      "region": "桃園市",
+      "address": "桃園市蘆竹區山腳里9鄰南山北路一段300號",
+      "operator": "永漢開發股份有限公司",
+      "approvedAreaHa": 75.5557,
+      "approvedHoles": 18,
+      "phone": "(03)3245711",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 23,
+      "name": "大溪高爾夫球場",
+      "region": "桃園市",
+      "address": "桃園市大溪區永福里日新路168號",
+      "operator": "大溪育樂股份有限公司",
+      "approvedAreaHa": 101.3111,
+      "approvedHoles": 27,
+      "phone": "(03)3875699",
+      "officialSite": "http://www.tasheegolf.com.tw/",
+      "scorecard": {
+        "confidence": "partial",
+        "totalPar": 72,
+        "totalYardageByTee": {
+          "championship_18": 7150
+        },
+        "tees": [
+          "championship_18"
+        ],
+        "holes": [],
+        "sourceURL": "https://www.golfasian.com/golf-courses/taiwan-golf-courses/",
+        "notes": "27-hole facility (East/Middle/West), 18-hole playable total 7,150 yds. Redesigned 1999 by Robert Trent Jones Jr. Official site TLS cert is mismatched (ERR_TLS_CERT_ALTNAME_INVALID)."
+      }
+    },
+    {
+      "no": 24,
+      "name": "東方高爾夫球場",
+      "region": "桃園市",
+      "address": "桃園市龜山區舊路里東方球場路100號",
+      "operator": "東方育樂事業股份有限公司",
+      "approvedAreaHa": 88.6926,
+      "approvedHoles": 18,
+      "phone": "(03)3501212",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 25,
+      "name": "明台國際高爾夫球場",
+      "region": "桃園市",
+      "address": "桃園市龍潭區三林里民生路439巷130號",
+      "operator": "明台育樂股份有限公司",
+      "approvedAreaHa": 72.810891,
+      "approvedHoles": 18,
+      "phone": "(03)4995506",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 26,
+      "name": "新竹高爾夫俱樂部股份有限公司球場",
+      "region": "新竹縣",
+      "address": "新竹縣新豐鄉上坑村坑子口104號",
+      "operator": "新竹高爾夫俱樂部股份有限公司",
+      "approvedAreaHa": 82.24595,
+      "approvedHoles": 27,
+      "phone": "(03)5596140",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 27,
+      "name": "山溪地高爾夫球場",
+      "region": "新竹縣",
+      "address": "新竹縣關西鎮玉山里2鄰13號",
+      "operator": "山溪地育樂事業股份有限公司",
+      "approvedAreaHa": 76.0876,
+      "approvedHoles": 18,
+      "phone": "(03)5476288",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 28,
+      "name": "再興高爾夫球場",
+      "region": "新竹縣",
+      "address": "新竹縣湖口鄉長安村再興路350號",
+      "operator": "再興育樂開發股份有限公司",
+      "approvedAreaHa": 67.2897,
+      "approvedHoles": 18,
+      "phone": "(03)5692318",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 29,
+      "name": "立益關西高爾夫球場",
+      "region": "新竹縣",
+      "address": "新竹縣關西鎮湖肚段55號",
+      "operator": "立益育樂股份有限公司",
+      "approvedAreaHa": 99.7357,
+      "approvedHoles": 18,
+      "phone": "(03)5871842",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 30,
+      "name": "老爺關西高爾夫球場",
+      "region": "新竹縣",
+      "address": "新竹縣關西鎮玉山里1鄰赤柯山1號",
+      "operator": "互馨育樂股份有限公司",
+      "approvedAreaHa": 103.1845,
+      "approvedHoles": 18,
+      "phone": "(03)5476331",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 31,
+      "name": "旭陽高爾夫球場",
+      "region": "新竹縣",
+      "address": "新竹縣關西鎮南新里新城段100號",
+      "operator": "旭陽育樂事業股份有限公司",
+      "approvedAreaHa": 89.60407,
+      "approvedHoles": 18,
+      "phone": "(03)5476569",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 32,
+      "name": "寶山高爾夫球場",
+      "region": "新竹縣",
+      "address": "新竹縣寶山鄉新城村寶新路2段465號",
+      "operator": "東光育樂股份有限公司",
+      "approvedAreaHa": 72.0879,
+      "approvedHoles": 18,
+      "phone": "(03)5762888",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 33,
+      "name": "皇家高爾夫球場",
+      "region": "苗栗縣",
+      "address": "苗栗縣頭屋鄉明德村1鄰明德路6之11號",
+      "operator": "耀德國際育樂股份有限公司",
+      "approvedAreaHa": 117.595,
+      "approvedHoles": 18,
+      "phone": "(037)543122",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 34,
+      "name": "全國高爾夫球場",
+      "region": "苗栗縣",
+      "address": "苗栗縣苑裡鎮石鎮里1鄰1之1號",
+      "operator": "全國高爾夫實業股份有限公司",
+      "approvedAreaHa": 115.310916,
+      "approvedHoles": 18,
+      "phone": "(037)741166",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 35,
+      "name": "台中國際高爾夫球場",
+      "region": "臺中市",
+      "address": "台中市北屯區民政里北坑巷21-8號",
+      "operator": "台中國際育樂股份有限公司",
+      "approvedAreaHa": 110.125005,
+      "approvedHoles": 27,
+      "phone": "(04)22391172",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 36,
+      "name": "空軍清泉崗高爾夫球場",
+      "region": "臺中市",
+      "address": "台中市清水區楊厝里和睦路2段305號",
+      "operator": "國防部空軍司令部",
+      "approvedAreaHa": 82.0,
+      "approvedHoles": 18,
+      "phone": "(04)26200134",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 37,
+      "name": "霧峰高爾夫球場",
+      "region": "臺中市",
+      "address": "台中市霧峰區峰谷里峰谷路668號",
+      "operator": "元扶企業股份有限公司",
+      "approvedAreaHa": 77.0938,
+      "approvedHoles": 18,
+      "phone": "(04)23301199",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 38,
+      "name": "臺中縣豐原高爾夫俱樂部球場",
+      "region": "臺中市",
+      "address": "台中市豐原區南嵩里水源路坪頂巷23號",
+      "operator": "社團法人台中市豐原高爾夫俱樂部",
+      "approvedAreaHa": 48.6985,
+      "approvedHoles": 18,
+      "phone": "(04)25222835",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 39,
+      "name": "鴻禧太平高爾夫球場",
+      "region": "臺中市",
+      "address": "台中市太平區頭汴里北田路265巷9號",
+      "operator": "同禧育樂股份有限公司",
+      "approvedAreaHa": 50.068594,
+      "approvedHoles": 18,
+      "phone": "(04)22703470",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 40,
+      "name": "彰化高爾夫股份有限公司彰化球場",
+      "region": "彰化縣",
+      "address": "彰化縣彰化市延和里大埔路2巷101號",
+      "operator": "彰化高爾夫有限公司",
+      "approvedAreaHa": 65.404833,
+      "approvedHoles": 18,
+      "phone": "(04)7135799",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 41,
+      "name": "台豐高爾夫球場",
+      "region": "彰化縣",
+      "address": "彰化縣大村鄉福興村學府路77號",
+      "operator": "台豐興業股份有限公司",
+      "approvedAreaHa": 67.9193,
+      "approvedHoles": 18,
+      "phone": "(04)8520101",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 42,
+      "name": "中華民國公教人員高爾夫研習會球場",
+      "region": "南投縣",
+      "address": "南投縣中興新村光明一路351號",
+      "operator": "國家文官學院",
+      "approvedAreaHa": 22.0863,
+      "approvedHoles": 9,
+      "phone": "(049)2332820",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 43,
+      "name": "南投縣松柏嶺高爾夫球場",
+      "region": "南投縣",
+      "address": "南投縣名間鄉炭寮村炭頂巷36之1號",
+      "operator": "松柏嶺企業股份有限公司",
+      "approvedAreaHa": 51.102493,
+      "approvedHoles": 18,
+      "phone": "(049)2732126",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 44,
+      "name": "南峰高爾夫球場",
+      "region": "南投縣",
+      "address": "南投縣南投市鳳山路336-1號",
+      "operator": "南峰國際股份有限公司",
+      "approvedAreaHa": 66.81495,
+      "approvedHoles": 18,
+      "phone": "(049)2254868",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 45,
+      "name": "嘉光高爾夫球場",
+      "region": "嘉義縣",
+      "address": "嘉義縣水上鄉南鄉村鹿寮12號",
+      "operator": "嘉光育樂中心股份有限公司",
+      "approvedAreaHa": 27.1433,
+      "approvedHoles": 9,
+      "phone": "(05)2536735",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 46,
+      "name": "東洋棕梠湖高爾夫球場",
+      "region": "嘉義縣",
+      "address": "嘉義縣番路鄉新福村第三農場24號",
+      "operator": "東洋休閒觀光股份有限公司",
+      "approvedAreaHa": 61.9578,
+      "approvedHoles": 18,
+      "phone": "(05)2590000",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 47,
+      "name": "台南高爾夫球場",
+      "region": "臺南市",
+      "address": "台南市新化區礁坑里100號",
+      "operator": "財團法人台南高爾夫俱樂部",
+      "approvedAreaHa": 42.1073,
+      "approvedHoles": 18,
+      "phone": "(06)5901666",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 48,
+      "name": "南寶高爾夫球場",
+      "region": "臺南市",
+      "address": "台南市大內區頭社里136號",
+      "operator": "南寶鄉村實業股份有限公司",
+      "approvedAreaHa": 81.9851,
+      "approvedHoles": 27,
+      "phone": "(06)5762546",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 49,
+      "name": "南一高爾夫球場",
+      "region": "臺南市",
+      "address": "台南市關廟區布袋里長榮街500號",
+      "operator": "南一育樂事業股份有限公司",
+      "approvedAreaHa": 91.4148,
+      "approvedHoles": 18,
+      "phone": "(06)5551121",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 50,
+      "name": "斑芝花高爾夫球場",
+      "region": "臺南市",
+      "address": "台南市東山區東原里斑芝花坑39號",
+      "operator": "騰慶新國際開發有限公司",
+      "approvedAreaHa": 108.4637,
+      "approvedHoles": 27,
+      "phone": "(06)6862208",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 51,
+      "name": "嘉南高爾夫球場",
+      "region": "臺南市",
+      "address": "台南市官田區社子里六雙21號",
+      "operator": "嘉南開發事業股份有限公司",
+      "approvedAreaHa": 74.3419,
+      "approvedHoles": 18,
+      "phone": "(06)6900800",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 52,
+      "name": "海軍左營高爾夫球場",
+      "region": "高雄市",
+      "address": "高雄市左營區長壽路1號",
+      "operator": "國防部海軍司令部",
+      "approvedAreaHa": 24.7011,
+      "approvedHoles": 9,
+      "phone": "(07)5856921",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 53,
+      "name": "觀音山高爾夫球場",
+      "region": "高雄市",
+      "address": "高雄市大樹區三和里三和路140號",
+      "operator": "觀音山高爾夫股份有限公司",
+      "approvedAreaHa": 52.1454,
+      "approvedHoles": 18,
+      "phone": "(07)6578190",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 54,
+      "name": "高雄市信誼高爾夫球場",
+      "region": "高雄市",
+      "address": "高雄市大樹區統嶺里信誼路1號",
+      "operator": "信誼育樂事業股份有限公司",
+      "approvedAreaHa": 73.1823,
+      "approvedHoles": 18,
+      "phone": "(07)6563211",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 55,
+      "name": "大崗山高爾夫球場",
+      "region": "高雄市",
+      "address": "高雄市田寮區西德里長山路1號",
+      "operator": "長山育樂股份有限公司",
+      "approvedAreaHa": 103.75692,
+      "approvedHoles": 18,
+      "phone": "(07)6366411",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 56,
+      "name": "山湖觀高爾夫球場",
+      "region": "屏東縣",
+      "address": "屏東縣高樹鄉廣興村中正路190號",
+      "operator": "大源開發股份有限公司",
+      "approvedAreaHa": 116.4046,
+      "approvedHoles": 27,
+      "phone": "(08)7956600",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    },
+    {
+      "no": 57,
+      "name": "花蓮高爾夫球場",
+      "region": "花蓮縣",
+      "address": "花蓮縣花蓮市化道路球崙1號",
+      "operator": "花蓮縣政府",
+      "approvedAreaHa": 39.6721,
+      "approvedHoles": 18,
+      "phone": "(03)8227528",
+      "officialSite": null,
+      "scorecard": {
+        "confidence": "unverified",
+        "totalPar": null,
+        "totalYardageByTee": {},
+        "tees": [],
+        "holes": [],
+        "sourceURL": null,
+        "notes": ""
+      }
+    }
+  ]
+}
